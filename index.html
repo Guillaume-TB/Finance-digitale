@@ -362,7 +362,37 @@ footer{background:#0D1B2E;padding:2.5rem 5vw;border-top:1px solid rgba(255,255,2
   </ul>
 </nav>
 
-<!-- HERO -->
+  
+<!-- DEFINITION -->
+<section id="definition" class="light">
+  <div class="sec-label">02 / Définition</div>
+  <h2 class="sec-title reveal">Qu'est-ce qu'un stablecoin ?</h2>
+  <p class="sec-sub reveal">Une idée ancienne (XVIIe siècle), une technologie nouvelle — BIS Working Paper No 905 (2020)</p>
+  <div class="compare-grid reveal">
+    <div class="compare-card bitcoin"><div class="cc-title">Bitcoin</div><div class="cc-sub">Cryptomonnaie pure, volatile</div><div class="cc-val">±50%</div><p style="font-size:.83rem;color:var(--dark-grey)">de variation annuelle — inutilisable comme moyen de paiement stable</p></div>
+    <div class="compare-card stablecoin"><div class="cc-title">Stablecoin</div><div class="cc-sub">Ancré au dollar ou à l'euro</div><div class="cc-val">= 1 $</div><p style="font-size:.83rem;color:var(--dark-grey)">valeur constante — combine rapidité des cryptos et stabilité des monnaies</p></div>
+    <div class="compare-card fiat"><div class="cc-title">Euro / Dollar</div><div class="cc-sub">Monnaie officielle d'État</div><div class="cc-val">Référence</div><p style="font-size:.83rem;color:var(--dark-grey)">le stablecoin en est une représentation privée numérique sur blockchain</p></div>
+  </div>
+  <div style="border-left:3px solid var(--gold);padding:1.4rem 1.8rem;background:rgba(232,160,32,.07);border-radius:0 4px 4px 0;margin-bottom:3rem" class="reveal">
+    <strong style="font-family:'Syne',sans-serif;color:var(--teal);font-size:.85rem;letter-spacing:.05em;display:block;margin-bottom:.4rem">Note historique — BIS (2020)</strong>
+    L'idée n'est pas nouvelle : la Banque d'Amsterdam du XVIIe siècle avait une structure économique similaire. Les MMF et la monnaie électronique des années 90 en sont des précurseurs. La blockchain apporte la dimension décentralisée et programmable — avec le risque supplémentaire de bank runs auto-réalisateurs.
+  </div>
+  <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem" class="reveal">Comment ça marche ?</h3>
+  <div class="steps-flow reveal">
+    <div class="step"><div class="step-num">1</div><div class="step-label">Client dépose<br><strong>100 $</strong></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-label">Émetteur investit<br><strong>en bons du Trésor</strong></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-label">Émet <strong>100 tokens</strong><br>sur blockchain</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-label">Rachat garanti<br><strong>1 token = 1 $</strong></div></div>
+  </div>
+  <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem" class="reveal">Les 3 types de garanties</h3>
+  <div class="types-grid reveal">
+    <div class="type-card type-fiat"><div class="type-h">✅ Adossés à la monnaie fiat</div><div class="type-b">Cash, bons du Trésor courts, dépôts bancaires.<br><br><strong style="color:var(--white)">Ex : USDT, USDC, EURC</strong><br><br>Les plus stables. Réglés par MiCA et GENIUS Act. Risque : opacité des réserves (cas Tether/NYAG 2019 : 700M$ prêtés sans garantie).</div></div>
+    <div class="type-card type-crypto"><div class="type-h">⚠️ Adossés à des crypto-actifs</div><div class="type-b">Garantis par d'autres cryptos, sur-collatéralisés.<br><br><strong style="color:var(--white)">Ex : DAI (MakerDAO)</strong><br><br>Plus transparents car tout est visible sur la blockchain. Risque : volatilité des actifs de garantie.</div></div>
+    <div class="type-card type-algo"><div class="type-h">❌ Algorithmiques — très risqués</div><div class="type-b">Stabilité par algorithme sans réserve réelle.<br><br><strong style="color:var(--white)">Ex : TerraUSD → effondrement mai 2022</strong><br><br>40 Mds$ détruits en 72h. BIS (2020) : "sujets à des bank runs auto-réalisateurs quand les actifs sont risqués ou opaques."</div></div>
+  </div>
+</section>
+
+  <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -643,35 +673,6 @@ footer{background:#0D1B2E;padding:2.5rem 5vw;border-top:1px solid rgba(255,255,2
         <div class="inf-conclusion" id="inflationDesc">La devise bolivar a perdu 99% de sa valeur en 5 ans. Les Vénézuéliens ont massivement adopté USDT pour leurs transactions quotidiennes.</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- DEFINITION -->
-<section id="definition" class="light">
-  <div class="sec-label">02 / Définition</div>
-  <h2 class="sec-title reveal">Qu'est-ce qu'un stablecoin ?</h2>
-  <p class="sec-sub reveal">Une idée ancienne (XVIIe siècle), une technologie nouvelle — BIS Working Paper No 905 (2020)</p>
-  <div class="compare-grid reveal">
-    <div class="compare-card bitcoin"><div class="cc-title">Bitcoin</div><div class="cc-sub">Cryptomonnaie pure, volatile</div><div class="cc-val">±50%</div><p style="font-size:.83rem;color:var(--dark-grey)">de variation annuelle — inutilisable comme moyen de paiement stable</p></div>
-    <div class="compare-card stablecoin"><div class="cc-title">Stablecoin</div><div class="cc-sub">Ancré au dollar ou à l'euro</div><div class="cc-val">= 1 $</div><p style="font-size:.83rem;color:var(--dark-grey)">valeur constante — combine rapidité des cryptos et stabilité des monnaies</p></div>
-    <div class="compare-card fiat"><div class="cc-title">Euro / Dollar</div><div class="cc-sub">Monnaie officielle d'État</div><div class="cc-val">Référence</div><p style="font-size:.83rem;color:var(--dark-grey)">le stablecoin en est une représentation privée numérique sur blockchain</p></div>
-  </div>
-  <div style="border-left:3px solid var(--gold);padding:1.4rem 1.8rem;background:rgba(232,160,32,.07);border-radius:0 4px 4px 0;margin-bottom:3rem" class="reveal">
-    <strong style="font-family:'Syne',sans-serif;color:var(--teal);font-size:.85rem;letter-spacing:.05em;display:block;margin-bottom:.4rem">Note historique — BIS (2020)</strong>
-    L'idée n'est pas nouvelle : la Banque d'Amsterdam du XVIIe siècle avait une structure économique similaire. Les MMF et la monnaie électronique des années 90 en sont des précurseurs. La blockchain apporte la dimension décentralisée et programmable — avec le risque supplémentaire de bank runs auto-réalisateurs.
-  </div>
-  <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem" class="reveal">Comment ça marche ?</h3>
-  <div class="steps-flow reveal">
-    <div class="step"><div class="step-num">1</div><div class="step-label">Client dépose<br><strong>100 $</strong></div></div>
-    <div class="step"><div class="step-num">2</div><div class="step-label">Émetteur investit<br><strong>en bons du Trésor</strong></div></div>
-    <div class="step"><div class="step-num">3</div><div class="step-label">Émet <strong>100 tokens</strong><br>sur blockchain</div></div>
-    <div class="step"><div class="step-num">4</div><div class="step-label">Rachat garanti<br><strong>1 token = 1 $</strong></div></div>
-  </div>
-  <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem" class="reveal">Les 3 types de garanties</h3>
-  <div class="types-grid reveal">
-    <div class="type-card type-fiat"><div class="type-h">✅ Adossés à la monnaie fiat</div><div class="type-b">Cash, bons du Trésor courts, dépôts bancaires.<br><br><strong style="color:var(--white)">Ex : USDT, USDC, EURC</strong><br><br>Les plus stables. Réglés par MiCA et GENIUS Act. Risque : opacité des réserves (cas Tether/NYAG 2019 : 700M$ prêtés sans garantie).</div></div>
-    <div class="type-card type-crypto"><div class="type-h">⚠️ Adossés à des crypto-actifs</div><div class="type-b">Garantis par d'autres cryptos, sur-collatéralisés.<br><br><strong style="color:var(--white)">Ex : DAI (MakerDAO)</strong><br><br>Plus transparents car tout est visible sur la blockchain. Risque : volatilité des actifs de garantie.</div></div>
-    <div class="type-card type-algo"><div class="type-h">❌ Algorithmiques — très risqués</div><div class="type-b">Stabilité par algorithme sans réserve réelle.<br><br><strong style="color:var(--white)">Ex : TerraUSD → effondrement mai 2022</strong><br><br>40 Mds$ détruits en 72h. BIS (2020) : "sujets à des bank runs auto-réalisateurs quand les actifs sont risqués ou opaques."</div></div>
   </div>
 </section>
 
