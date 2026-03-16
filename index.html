@@ -3,1042 +3,356 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Les Stablecoins — La monnaie numérique qui défie les banques centrales</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Les Stablecoins — La monnaie numérique qui change tout</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #1A2B4A;
-  --navy-mid: #243860;
-  --gold: #E8A020;
-  --gold-light: #F5C55A;
-  --gold-pale: #FFF3CD;
-  --white: #FFFFFF;
-  --off-white: #F4F6FA;
-  --light-grey: #E8ECF2;
-  --grey: #8C9BB5;
-  --dark-grey: #3D4F6E;
-  --green: #1D8A4F;
-  --green-light: #E8F5EE;
-  --red: #C0392B;
-  --red-light: #FDECEA;
-  --teal: #0D7377;
-  --teal-light: #E0F2F3;
-  --orange: #D4680A;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--navy);
-  color: var(--white);
-  overflow-x: hidden;
-}
-
-/* ── HERO ─────────────────────────────────── */
-.hero {
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0 6vw;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute; inset: 0;
-  background: 
-    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(14, 115, 119, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(232, 160, 32, 0.08) 0%, transparent 60%),
-    var(--navy);
-}
-
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image: 
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
-}
-
-.hero-gold-bar {
-  position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
-  background: linear-gradient(to bottom, var(--gold), var(--gold-light), var(--gold));
-}
-
-.hero-content { position: relative; z-index: 2; max-width: 900px; }
-
-.hero-eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.2s forwards;
-}
-
-.hero-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.4s forwards;
-}
-
-.hero-title span { color: var(--gold); }
-
-.hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 300;
-  color: var(--grey);
-  max-width: 600px;
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.6s forwards;
-}
-
-.hero-tags {
-  display: flex; flex-wrap: wrap; gap: 0.75rem;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.8s forwards;
-}
-
-.tag {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  padding: 0.4rem 1rem;
-  border-radius: 2px;
-  font-size: 0.8rem;
-  font-family: 'DM Mono', monospace;
-  color: var(--grey);
-  letter-spacing: 0.05em;
-}
-
-.hero-sources {
-  position: absolute;
-  bottom: 2rem; left: 6vw; right: 6vw;
-  display: flex; gap: 1rem; flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.8s 1s forwards;
-}
-
-.src-badge {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(232, 160, 32, 0.25);
-  padding: 0.4rem 0.9rem;
-  font-size: 0.7rem;
-  font-family: 'DM Mono', monospace;
-  color: var(--gold-light);
-  border-radius: 2px;
-  white-space: nowrap;
-}
-
-.scroll-hint {
-  position: absolute;
-  bottom: 2rem; right: 6vw;
-  display: flex; align-items: center; gap: 0.5rem;
-  font-size: 0.75rem; color: var(--grey);
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.1em;
-  opacity: 0;
-  animation: fadeUp 0.8s 1.2s forwards;
-}
-
-.scroll-line {
-  width: 40px; height: 1px;
-  background: linear-gradient(to right, transparent, var(--grey));
-}
-
-/* ── SECTIONS ──────────────────────────────── */
-section {
-  padding: 8rem 6vw;
-  position: relative;
-}
-
-section.light {
-  background: var(--off-white);
-  color: var(--navy);
-}
-
-.section-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1rem;
-}
-
-section.light .section-label { color: var(--teal); }
-
-.section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  margin-bottom: 1rem;
-}
-
-.section-sub {
-  font-size: 1rem;
-  color: var(--grey);
-  margin-bottom: 3.5rem;
-  font-weight: 300;
-  font-style: italic;
-  max-width: 700px;
-}
-
-section.light .section-sub { color: var(--dark-grey); }
-
-/* ── DEFINITION SECTION ────────────────────── */
-.compare-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5px;
-  margin-bottom: 3rem;
-  border: 1.5px solid rgba(255,255,255,0.08);
-}
-
-.compare-card {
-  padding: 2.5rem 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.compare-card:hover { transform: translateY(-4px); }
-
-.compare-card.bitcoin { background: rgba(192,57,43,0.12); border-top: 3px solid var(--red); }
-.compare-card.stablecoin { background: rgba(29,138,79,0.12); border-top: 3px solid var(--green); }
-.compare-card.fiat { background: rgba(36,56,96,0.4); border-top: 3px solid var(--gold); }
-
-.compare-card-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-}
-
-.compare-card-sub { font-size: 0.85rem; color: var(--grey); margin-bottom: 1.5rem; }
-
-.compare-big-val {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.8rem;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 0.3rem;
-}
-
-.bitcoin .compare-big-val { color: var(--red); }
-.stablecoin .compare-big-val { color: var(--green); }
-.fiat .compare-big-val { color: var(--gold); }
-
-.history-note {
-  border-left: 3px solid var(--gold);
-  padding: 1.5rem 2rem;
-  background: rgba(232,160,32,0.06);
-  border-radius: 0 4px 4px 0;
-}
-
-.history-note strong {
-  font-family: 'Syne', sans-serif;
-  color: var(--gold);
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* ── HOW IT WORKS ──────────────────────────── */
-.steps-flow {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin-bottom: 4rem;
-  position: relative;
-}
-
-.steps-flow::before {
-  content: '';
-  position: absolute;
-  top: 2.5rem; left: 12.5%; right: 12.5%;
-  height: 2px;
-  background: linear-gradient(to right, var(--navy-mid), var(--gold), var(--navy-mid));
-  z-index: 0;
-}
-
-.step {
-  text-align: center;
-  padding: 0 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.step-num {
-  width: 5rem; height: 5rem;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Syne', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 800;
-  margin: 0 auto 1.5rem;
-  border: 2px solid var(--gold);
-  background: var(--navy);
-  color: var(--gold);
-  transition: all 0.3s ease;
-}
-
-.step:hover .step-num {
-  background: var(--gold);
-  color: var(--navy);
-  transform: scale(1.1);
-}
-
-.step-label {
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--light-grey);
-}
-
-.types-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.type-card {
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.type-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.35);
-}
-
-.type-header {
-  padding: 1rem 1.5rem;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.type-body {
-  padding: 1.5rem;
-  background: rgba(255,255,255,0.04);
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: var(--grey);
-}
-
-.type-fiat .type-header { background: var(--green); }
-.type-crypto .type-header { background: var(--teal); }
-.type-algo .type-header { background: var(--red); }
-
-/* ── STATS BAR ─────────────────────────────── */
-.stats-bar {
-  background: var(--navy-mid);
-  padding: 3rem 6vw;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.stat-item { text-align: center; }
-
-.stat-value {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 0.4rem;
-}
-
-.stat-label {
-  font-size: 0.8rem;
-  color: var(--grey);
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.05em;
-}
-
-/* ── SOVEREIGNTY ───────────────────────────── */
-.sovereignty-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.8fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-.big-stat-box {
-  background: var(--navy);
-  border-radius: 4px;
-  padding: 3rem 2rem;
-  text-align: center;
-  border: 1px solid rgba(255,255,255,0.08);
-  position: relative;
-  overflow: hidden;
-}
-
-.big-stat-box::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 4px;
-  background: var(--red);
-}
-
-.big-stat-label {
-  font-size: 0.8rem;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--grey);
-  margin-bottom: 1.5rem;
-}
-
-.big-stat-number {
-  font-family: 'Syne', sans-serif;
-  font-size: 7rem;
-  font-weight: 800;
-  color: var(--red);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.big-stat-desc { font-size: 0.9rem; color: var(--grey); line-height: 1.6; margin-bottom: 1rem; }
-.big-stat-source { font-size: 0.7rem; color: var(--dark-grey); font-style: italic; }
-
-.risks-list { display: flex; flex-direction: column; gap: 1rem; }
-
-.risk-item {
-  display: flex; gap: 1rem; align-items: flex-start;
-  padding: 1.2rem 1.5rem;
-  background: var(--navy);
-  border-left: 3px solid var(--red);
-  border-radius: 0 4px 4px 0;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.risk-item:hover { transform: translateX(4px); border-color: var(--gold); }
-
-.risk-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--red);
-  min-width: 2rem;
-  line-height: 1;
-}
-
-.risk-text { font-size: 0.9rem; color: var(--light-grey); line-height: 1.5; }
-
-.solution-note {
-  margin-top: 2.5rem;
-  padding: 1.5rem 2rem;
-  background: var(--gold-pale);
-  color: var(--navy);
-  border-radius: 4px;
-  border-left: 4px solid var(--gold);
-  font-size: 0.9rem;
-  line-height: 1.7;
-}
-
-/* ── PLAYERS ───────────────────────────────── */
-.players-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
-
-.players-column-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 3px;
-}
-
-.us-col .players-column-title { background: #1A3A6B; }
-.eu-col .players-column-title { background: var(--teal); }
-
-.player-card {
-  padding: 1.5rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.player-card:hover {
-  background: rgba(255,255,255,0.08);
-  transform: translateY(-2px);
-}
-
-.player-header {
-  display: flex; justify-content: space-between; align-items: baseline;
-  margin-bottom: 0.6rem;
-}
-
-.player-name {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-.us-col .player-name { color: #8BB3F0; }
-.eu-col .player-name { color: #7DD3D5; }
-
-.player-share {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.78rem;
-  color: var(--gold);
-  font-weight: 500;
-}
-
-.player-desc { font-size: 0.85rem; color: var(--grey); line-height: 1.6; }
-
-/* ── REGULATION TABLE ──────────────────────── */
-.reg-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
-}
-
-.reg-table thead tr {
-  background: var(--navy-mid);
-}
-
-.reg-table th {
-  padding: 1rem 1.5rem;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-align: left;
-}
-
-.reg-table th:first-child { color: var(--grey); }
-.reg-table th:nth-child(2) { color: var(--gold-light); }
-.reg-table th:nth-child(3) { color: #7DD3D5; }
-
-.reg-table tbody tr:nth-child(odd) { background: rgba(255,255,255,0.03); }
-.reg-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.015); }
-
-.reg-table tbody tr { transition: background 0.2s ease; }
-.reg-table tbody tr:hover { background: rgba(232,160,32,0.06); }
-
-.reg-table td {
-  padding: 0.85rem 1.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  color: var(--light-grey);
-  vertical-align: middle;
-}
-
-.reg-table td:first-child { color: var(--grey); font-weight: 500; font-size: 0.85rem; }
-
-.convergence-badge {
-  display: inline-block;
-  background: rgba(232,160,32,0.15);
-  border: 1px solid rgba(232,160,32,0.4);
-  color: var(--gold);
-  padding: 0.6rem 1.5rem;
-  border-radius: 2px;
-  font-size: 0.82rem;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.03em;
-  line-height: 1.6;
-}
-
-/* ── RISKS CHANNELS ────────────────────────── */
-.channels-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.channel-card {
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
-
-.channel-card:hover { transform: translateY(-6px); }
-
-.channel-header {
-  padding: 1.2rem 1.5rem;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--white);
-}
-
-.channel-body {
-  padding: 1.5rem;
-  background: rgba(26,43,74,0.8);
-  font-size: 0.88rem;
-  line-height: 1.8;
-  color: var(--grey);
-  min-height: 200px;
-}
-
-.channel-card.red .channel-header { background: var(--red); }
-.channel-card.teal .channel-header { background: var(--teal); }
-.channel-card.gold .channel-header { background: var(--gold); color: var(--navy); }
-
-.empirical-box {
-  background: var(--navy-mid);
-  border-left: 4px solid var(--gold);
-  padding: 2rem 2.5rem;
-  border-radius: 0 4px 4px 0;
-}
-
-.empirical-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--gold);
-  margin-bottom: 0.75rem;
-}
-
-.empirical-text { font-size: 0.9rem; color: var(--light-grey); line-height: 1.7; }
-
-/* ── EMBEDDED SUPERVISION ──────────────────── */
-.principles-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.principle-card {
-  display: flex; gap: 1.5rem; align-items: flex-start;
-  padding: 2rem;
-  border-radius: 4px;
-  background: var(--navy);
-  border: 1px solid rgba(255,255,255,0.07);
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.principle-card:hover { transform: translateY(-3px); }
-.principle-card:nth-child(1) { border-top: 3px solid var(--navy-mid); }
-.principle-card:nth-child(1):hover { border-top-color: var(--gold); border-color: var(--gold); }
-.principle-card:nth-child(2) { border-top: 3px solid var(--teal); }
-.principle-card:nth-child(2):hover { border-color: var(--teal); }
-.principle-card:nth-child(3) { border-top: 3px solid var(--green); }
-.principle-card:nth-child(3):hover { border-color: var(--green); }
-.principle-card:nth-child(4) { border-top: 3px solid var(--orange); }
-.principle-card:nth-child(4):hover { border-color: var(--orange); }
-
-.principle-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 800;
-  min-width: 2.5rem;
-  line-height: 1;
-}
-
-.principle-card:nth-child(1) .principle-num { color: var(--gold); }
-.principle-card:nth-child(2) .principle-num { color: var(--teal); }
-.principle-card:nth-child(3) .principle-num { color: var(--green); }
-.principle-card:nth-child(4) .principle-num { color: var(--orange); }
-
-.principle-content h4 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--white);
-}
-
-.principle-content p { font-size: 0.88rem; color: var(--grey); line-height: 1.6; }
-
-/* ── CBDC ──────────────────────────────────── */
-.cbdc-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 2.5rem;
-}
-
-.cbdc-feature-list { display: flex; flex-direction: column; gap: 0.6rem; }
-
-.cbdc-feature {
-  display: flex; align-items: center; gap: 0.8rem;
-  padding: 0.75rem 1rem;
-  border-radius: 3px;
-  font-size: 0.9rem;
-  transition: background 0.2s ease;
-}
-
-.cbdc-feature:hover { background: rgba(13,115,119,0.1); }
-
-.cbdc-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--teal);
-  flex-shrink: 0;
-}
-
-.cbdc-compare-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-}
-
-.cbdc-compare-table th {
-  padding: 0.75rem 1rem;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-align: center;
-  background: rgba(255,255,255,0.05);
-  border-bottom: 2px solid rgba(255,255,255,0.1);
-}
-
-.cbdc-compare-table th:first-child { text-align: left; color: var(--grey); }
-.cbdc-compare-table th:nth-child(2) { color: var(--green); }
-.cbdc-compare-table th:nth-child(3) { color: var(--red); }
-
-.cbdc-compare-table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  text-align: center;
-  color: var(--grey);
-}
-
-.cbdc-compare-table td:first-child {
-  text-align: left;
-  font-weight: 500;
-  color: var(--light-grey);
-  font-size: 0.85rem;
-}
-
-.cbdc-compare-table td.ok { color: var(--green); font-weight: 600; }
-.cbdc-compare-table td.nok { color: var(--red); font-weight: 600; }
-
-.usa-warning {
-  background: rgba(232,160,32,0.08);
-  border: 1px solid rgba(232,160,32,0.3);
-  border-radius: 4px;
-  padding: 1.5rem 2rem;
-  font-size: 0.9rem;
-  line-height: 1.7;
-  color: var(--light-grey);
-}
-
-.usa-warning strong { color: var(--gold); }
-
-/* ── COMMERCIAL BANKS + REVOLUT ────────────── */
-.banks-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.banks-box {
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.banks-box-header {
-  padding: 1rem 1.5rem;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.banks-box.threat .banks-box-header { background: var(--red); }
-.banks-box.response .banks-box-header { background: var(--green); }
-
-.banks-box-body {
-  padding: 1.5rem;
-  background: rgba(255,255,255,0.03);
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.banks-item {
-  display: flex; gap: 0.6rem; align-items: flex-start;
-  font-size: 0.88rem; color: var(--grey); line-height: 1.5;
-}
-
-.banks-item::before {
-  content: '→';
-  color: var(--gold);
-  flex-shrink: 0;
-  font-size: 0.75rem;
-  margin-top: 0.12rem;
-}
-
-.revolut-card {
-  background: var(--white);
-  color: var(--navy);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.3);
-}
-
-.revolut-header {
-  background: var(--gold);
-  padding: 1.2rem 2rem;
-  display: flex; align-items: center; gap: 1rem;
-}
-
-.revolut-logo {
-  width: 2.5rem; height: 2.5rem;
-  background: var(--navy);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: var(--white);
-}
-
-.revolut-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--navy);
-}
-
-.revolut-subtitle { font-size: 0.85rem; color: rgba(26,43,74,0.7); }
-
-.revolut-stats {
-  display: flex;
-  border-bottom: 1px solid var(--light-grey);
-}
-
-.rev-stat {
-  flex: 1;
-  padding: 1.2rem 1.5rem;
-  border-right: 1px solid var(--light-grey);
-  text-align: center;
-}
-
-.rev-stat:last-child { border-right: none; }
-
-.rev-stat-val {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--navy);
-}
-
-.rev-stat-label { font-size: 0.75rem; color: var(--dark-grey); }
-
-.revolut-body {
-  padding: 1.5rem 2rem;
-  font-size: 0.9rem;
-  color: var(--dark-grey);
-  line-height: 1.7;
-}
-
-/* ── EUROSYSTEM STRATEGY ───────────────────── */
-.strategy-levels { display: flex; flex-direction: column; gap: 1.5rem; }
-
-.strategy-level {
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-}
-
-.strategy-level-header {
-  padding: 1.2rem 2rem;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--white);
-}
-
-.strategy-level.retail .strategy-level-header { background: var(--teal); }
-.strategy-level.wholesale .strategy-level-header { background: var(--navy-mid); }
-
-.strategy-level-body {
-  padding: 1.5rem 2rem;
-  background: rgba(255,255,255,0.03);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.strategy-item {
-  font-size: 0.88rem;
-  color: var(--grey);
-  line-height: 1.6;
-  padding-left: 1rem;
-  border-left: 2px solid rgba(255,255,255,0.15);
-}
-
-.strategy-item strong { display: block; color: var(--light-grey); margin-bottom: 0.3rem; font-size: 0.92rem; }
-
-/* ── SYNTHESIS ─────────────────────────────── */
-.synthesis-list { display: flex; flex-direction: column; gap: 1rem; }
-
-.synthesis-item {
-  display: grid;
-  grid-template-columns: 3.5rem 5rem 1fr;
-  gap: 1.5rem;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  background: rgba(255,255,255,0.04);
-  border-radius: 4px;
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.synthesis-item:hover {
-  background: rgba(255,255,255,0.07);
-  transform: translateX(4px);
-}
-
-.syn-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--gold);
-  text-align: center;
-}
-
-.syn-src {
-  background: var(--navy-mid);
-  padding: 0.4rem 0.6rem;
-  border-radius: 3px;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--gold-light);
-  text-align: center;
-  line-height: 1.4;
-}
-
-.syn-text { font-size: 0.92rem; color: var(--light-grey); line-height: 1.6; }
-
-/* ── FOOTER ────────────────────────────────── */
-footer {
-  background: #0D1B2E;
-  padding: 3rem 6vw;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-.footer-inner {
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 1.5rem;
-}
-
-.footer-brand {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--gold);
-}
-
-.footer-sources {
-  display: flex; flex-wrap: wrap; gap: 0.5rem;
-  max-width: 600px;
-}
-
-.footer-src {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--dark-grey);
-  padding: 0.25rem 0.6rem;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 2px;
-}
-
-/* ── NAV ───────────────────────────────────── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1rem 6vw;
-  display: flex; justify-content: space-between; align-items: center;
-  background: rgba(13,27,46,0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.nav-logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--gold);
-  letter-spacing: 0.05em;
-}
-
-.nav-links {
-  display: flex; gap: 2rem; list-style: none;
-}
-
-.nav-links a {
-  font-size: 0.8rem;
-  font-family: 'DM Mono', monospace;
-  color: var(--grey);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: color 0.2s ease;
-}
-
-.nav-links a:hover { color: var(--gold); }
-
-/* ── ANIMATIONS ────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── RESPONSIVE ────────────────────────────── */
-@media (max-width: 900px) {
-  .compare-grid, .steps-flow, .types-grid, .players-grid,
-  .channels-grid, .cbdc-grid, .banks-grid, .principles-grid,
-  .sovereignty-layout {
-    grid-template-columns: 1fr;
-  }
-  .stats-bar { grid-template-columns: repeat(2,1fr); }
-  .strategy-level-body { grid-template-columns: 1fr; }
-  .synthesis-item { grid-template-columns: 2.5rem 4rem 1fr; }
-  .steps-flow::before { display: none; }
-  .nav-links { display: none; }
-  .revolut-stats { flex-wrap: wrap; }
-}
+  --navy:#1A2B4A; --navy-mid:#243860; --navy-light:#2E4A7A;
+  --gold:#E8A020; --gold-light:#F5C55A; --gold-pale:#FFF3CD;
+  --white:#FFFFFF; --off-white:#F4F6FA; --light-grey:#E8ECF2;
+  --grey:#8C9BB5; --dark-grey:#3D4F6E;
+  --green:#1D8A4F; --green-light:#E8F5EE;
+  --red:#C0392B; --red-light:#FDECEA;
+  --teal:#0D7377; --teal-light:#E0F2F3;
+  --orange:#D4680A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:.9rem 5vw;display:flex;justify-content:space-between;align-items:center;background:rgba(13,27,46,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--gold);letter-spacing:.05em}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:.75rem;font-family:'DM Mono',monospace;color:var(--grey);text-decoration:none;letter-spacing:.05em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+@media(max-width:800px){.nav-links{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:0 5vw;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 65% 50%,rgba(13,115,119,.14) 0%,transparent 70%),radial-gradient(ellipse 40% 50% at 10% 80%,rgba(232,160,32,.08) 0%,transparent 60%),var(--navy)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black,transparent)}
+.hero-bar{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--gold),var(--gold-light),var(--gold))}
+.hero-content{position:relative;z-index:2;max-width:820px}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:800;line-height:.95;letter-spacing:-.02em;margin-bottom:1.4rem;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-title span{color:var(--gold)}
+.hero-sub{font-size:clamp(1rem,1.8vw,1.2rem);font-weight:300;color:var(--grey);max-width:580px;line-height:1.75;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .6s forwards}
+.hero-cta{display:inline-flex;align-items:center;gap:.8rem;background:var(--gold);color:var(--navy);padding:.9rem 2rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;border-radius:3px;transition:transform .2s,box-shadow .2s;opacity:0;animation:fadeUp .8s .8s forwards}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,160,32,.35)}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;opacity:0;animation:fadeUp .8s 1s forwards}
+.tag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.35rem .9rem;border-radius:2px;font-size:.75rem;font-family:'DM Mono',monospace;color:var(--grey);letter-spacing:.04em}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeUp .8s 1.2s forwards}
+.hero-scroll span{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;color:var(--grey)}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--grey),transparent);animation:scrollLine 1.5s infinite}
+@keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.4}}
+
+/* STATS */
+.stats-bar{background:var(--navy-mid);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.stat-item{padding:2rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,.06)}
+.stat-item:last-child{border-right:none}
+.stat-val{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--gold);line-height:1;margin-bottom:.3rem}
+.stat-lbl{font-size:.75rem;color:var(--grey);font-family:'DM Mono',monospace;letter-spacing:.04em}
+@media(max-width:700px){.stats-bar{grid-template-columns:repeat(2,1fr)}.stat-item:nth-child(2){border-right:none}}
+
+/* SECTIONS */
+section{padding:7rem 5vw;position:relative}
+section.light{background:var(--off-white);color:var(--navy)}
+.sec-label{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+section.light .sec-label{color:var(--teal)}
+.sec-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:800;line-height:1.05;margin-bottom:.8rem}
+.sec-sub{font-size:.95rem;color:var(--grey);margin-bottom:3rem;font-weight:300;font-style:italic;max-width:700px;line-height:1.6}
+section.light .sec-sub{color:var(--dark-grey)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════════════════
+   INTERACTIVE COMPARISON SECTION
+   ══════════════════════════════ */
+
+/* SCENARIO TABS */
+.scenario-tabs{display:flex;gap:.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.scenario-tab{padding:.6rem 1.4rem;border:1px solid rgba(255,255,255,.12);border-radius:3px;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.05em;cursor:pointer;transition:all .25s;background:transparent;color:var(--grey)}
+.scenario-tab:hover{border-color:var(--gold);color:var(--gold-light)}
+.scenario-tab.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+
+/* RACE WIDGET */
+.race-container{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2.5rem;margin-bottom:2rem}
+.race-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.race-desc{font-size:.9rem;color:var(--grey);margin-bottom:2rem;line-height:1.6}
+.race-tracks{display:flex;flex-direction:column;gap:1.8rem}
+.race-track{display:flex;flex-direction:column;gap:.6rem}
+.track-header{display:flex;justify-content:space-between;align-items:center}
+.track-name{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700}
+.track-status{font-family:'DM Mono',monospace;font-size:.78rem;padding:.3rem .8rem;border-radius:2px}
+.track-bar-bg{height:18px;border-radius:9px;background:rgba(255,255,255,.07);overflow:hidden;position:relative}
+.track-bar{height:100%;border-radius:9px;width:0%;transition:width .1s linear;position:relative}
+.track-bar::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:inherit;border:3px solid var(--navy);transition:right .1s linear}
+.track-swift .track-bar{background:linear-gradient(to right,var(--red),#e74c3c)}
+.track-stable .track-bar{background:linear-gradient(to right,var(--green),#27ae60)}
+.track-info{font-size:.82rem;color:var(--grey);display:flex;gap:1.5rem;flex-wrap:wrap}
+.track-info span{display:flex;align-items:center;gap:.3rem}
+.race-btn{margin-top:1.5rem;padding:.75rem 2rem;background:var(--navy-mid);border:1px solid var(--gold);color:var(--gold);font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;border-radius:3px;cursor:pointer;transition:all .25s}
+.race-btn:hover{background:var(--gold);color:var(--navy)}
+
+/* WINNER BANNER */
+.winner-banner{display:none;margin-top:1.5rem;padding:1.2rem 1.8rem;border-radius:4px;font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;text-align:center;animation:popIn .4s ease}
+.winner-banner.show{display:block}
+@keyframes popIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* COST CALCULATOR */
+.calc-widget{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2.5rem;margin-bottom:2rem}
+.calc-top{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem}
+@media(max-width:700px){.calc-top{grid-template-columns:1fr}}
+.calc-label{font-size:.8rem;font-family:'DM Mono',monospace;letter-spacing:.08em;color:var(--grey);margin-bottom:.6rem;display:block}
+.calc-input-wrap{position:relative}
+.calc-input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:3px;padding:.8rem 1rem .8rem 2.5rem;color:var(--white);font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;outline:none;transition:border-color .2s}
+.calc-input:focus{border-color:var(--gold)}
+.calc-currency{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);font-family:'DM Mono',monospace;font-size:.85rem;color:var(--grey)}
+.calc-select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:3px;padding:.8rem 1rem;color:var(--white);font-family:'DM Mono',monospace;font-size:.88rem;outline:none;cursor:pointer;transition:border-color .2s}
+.calc-select:focus{border-color:var(--gold)}
+.calc-select option{background:var(--navy-mid)}
+.calc-results{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:700px){.calc-results{grid-template-columns:1fr}}
+.calc-result-box{border-radius:4px;overflow:hidden}
+.calc-result-header{padding:.9rem 1.2rem;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700}
+.calc-result-body{padding:1.4rem 1.2rem;display:flex;flex-direction:column;gap:.8rem}
+.calc-result-box.swift .calc-result-header{background:var(--red)}
+.calc-result-box.stable .calc-result-header{background:var(--green)}
+.calc-result-box.swift .calc-result-body{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.2);border-top:none}
+.calc-result-box.stable .calc-result-body{background:rgba(29,138,79,.08);border:1px solid rgba(29,138,79,.2);border-top:none}
+.calc-row{display:flex;justify-content:space-between;align-items:center;font-size:.88rem}
+.calc-row-label{color:var(--grey)}
+.calc-row-val{font-family:'DM Mono',monospace;font-weight:500}
+.calc-row-val.bad{color:var(--red)}
+.calc-row-val.good{color:var(--green)}
+.calc-row-val.big{font-size:1.3rem;font-family:'Syne',sans-serif;font-weight:800}
+.calc-divider{height:1px;background:rgba(255,255,255,.08)}
+.savings-highlight{background:linear-gradient(135deg,rgba(232,160,32,.15),rgba(232,160,32,.05));border:1px solid rgba(232,160,32,.3);border-radius:4px;padding:1.2rem 1.5rem;text-align:center;margin-top:1.5rem}
+.savings-big{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--gold);line-height:1}
+.savings-label{font-size:.85rem;color:var(--grey);margin-top:.3rem}
+
+/* JOURNEY DIAGRAM */
+.journey-container{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2.5rem;margin-bottom:2rem}
+.journey-tabs{display:flex;gap:.5rem;margin-bottom:2rem}
+.journey-tab{padding:.5rem 1.2rem;border:1px solid rgba(255,255,255,.12);border-radius:3px;font-size:.78rem;font-family:'DM Mono',monospace;cursor:pointer;transition:all .25s;background:transparent;color:var(--grey)}
+.journey-tab.active{background:var(--navy-mid);border-color:rgba(255,255,255,.25);color:var(--white)}
+.journey-display{display:none}
+.journey-display.active{display:block}
+.journey-steps{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin-bottom:1.5rem}
+.j-step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;flex:1;min-width:80px}
+.j-step-circle{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:.5rem;position:relative;z-index:1}
+.j-step-label{font-size:.72rem;color:var(--grey);line-height:1.4;max-width:80px}
+.j-arrow{font-size:1.2rem;color:var(--grey);margin-bottom:1rem;flex-shrink:0}
+.j-step.bad .j-step-circle{background:rgba(192,57,43,.2);border:2px solid var(--red);color:var(--red)}
+.j-step.good .j-step-circle{background:rgba(29,138,79,.2);border:2px solid var(--green);color:var(--green)}
+.j-meta{display:flex;gap:2rem;flex-wrap:wrap}
+.j-meta-item{display:flex;flex-direction:column;gap:.2rem}
+.j-meta-key{font-size:.72rem;font-family:'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+.j-meta-val{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800}
+.j-meta-val.bad{color:var(--red)}
+.j-meta-val.good{color:var(--green)}
+
+/* USE CASES CARDS */
+.use-cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+@media(max-width:900px){.use-cases-grid{grid-template-columns:1fr}}
+.use-case-card{border-radius:5px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.use-case-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.35)}
+.uc-header{padding:1.5rem;position:relative;overflow:hidden}
+.uc-emoji{font-size:2.5rem;margin-bottom:.8rem;display:block}
+.uc-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
+.uc-subtitle{font-size:.82rem;opacity:.8}
+.uc-body{padding:1.5rem;background:rgba(26,43,74,.85)}
+.uc-before-after{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.uc-col-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
+.uc-before .uc-col-label{color:var(--red)}
+.uc-after .uc-col-label{color:var(--green)}
+.uc-metric{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;line-height:1}
+.uc-before .uc-metric{color:var(--red)}
+.uc-after .uc-metric{color:var(--green)}
+.uc-metric-sub{font-size:.75rem;color:var(--grey);margin-top:.2rem}
+.uc-desc{font-size:.85rem;color:var(--grey);line-height:1.6}
+/* card colors */
+.uc-card-1 .uc-header{background:linear-gradient(135deg,#1a3a6b,#243860)}
+.uc-card-2 .uc-header{background:linear-gradient(135deg,#0d5c60,#0d7377)}
+.uc-card-3 .uc-header{background:linear-gradient(135deg,#7b3200,var(--orange))}
+
+/* HYPERINFLATION METER */
+.inflation-widget{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2.5rem;margin-top:2rem}
+.inf-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+@media(max-width:700px){.inf-grid{grid-template-columns:1fr}}
+.inf-countries{display:flex;flex-direction:column;gap:.6rem}
+.inf-country-btn{padding:.75rem 1.2rem;border:1px solid rgba(255,255,255,.1);border-radius:3px;background:transparent;color:var(--grey);font-family:'DM Mono',monospace;font-size:.82rem;cursor:pointer;transition:all .25s;text-align:left;display:flex;justify-content:space-between;align-items:center}
+.inf-country-btn:hover{border-color:var(--gold);color:var(--gold-light)}
+.inf-country-btn.active{background:rgba(232,160,32,.12);border-color:var(--gold);color:var(--gold)}
+.inf-rate-badge{font-weight:700;font-size:.9rem}
+.inf-display{text-align:center}
+.inf-meter{width:200px;height:200px;margin:0 auto 1.5rem;position:relative}
+.inf-meter svg{transform:rotate(-90deg)}
+.inf-meter-bg{fill:none;stroke:rgba(255,255,255,.07);stroke-width:14}
+.inf-meter-fill{fill:none;stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 1s ease,stroke .5s ease}
+.inf-center-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.inf-pct{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;line-height:1}
+.inf-pct-label{font-size:.72rem;font-family:'DM Mono',monospace;letter-spacing:.08em;color:var(--grey)}
+.inf-conclusion{font-size:.9rem;line-height:1.7;color:var(--grey);max-width:300px;margin:0 auto}
+.inf-conclusion strong{color:var(--white)}
+
+/* ══ REST OF PAGE ══ */
+.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-bottom:2.5rem;border:1.5px solid rgba(255,255,255,.06)}
+.compare-card{padding:2.2rem 1.8rem;transition:transform .3s}
+.compare-card:hover{transform:translateY(-4px)}
+.compare-card.bitcoin{background:rgba(192,57,43,.1);border-top:3px solid var(--red)}
+.compare-card.stablecoin{background:rgba(29,138,79,.1);border-top:3px solid var(--green)}
+.compare-card.fiat{background:rgba(36,56,96,.4);border-top:3px solid var(--gold)}
+.cc-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.3rem}
+.cc-sub{font-size:.82rem;color:var(--grey);margin-bottom:1.2rem}
+.cc-val{font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:800;line-height:1;margin-bottom:.3rem}
+.bitcoin .cc-val{color:var(--red)}.stablecoin .cc-val{color:var(--green)}.fiat .cc-val{color:var(--gold)}
+
+.steps-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:3rem;position:relative}
+.steps-flow::before{content:'';position:absolute;top:2.4rem;left:12%;right:12%;height:2px;background:linear-gradient(to right,var(--navy-mid),var(--gold),var(--navy-mid));z-index:0}
+.step{text-align:center;padding:0 1.2rem;position:relative;z-index:1}
+.step-num{width:5rem;height:5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;margin:0 auto 1.2rem;border:2px solid var(--gold);background:var(--navy);color:var(--gold);transition:all .3s}
+.step:hover .step-num{background:var(--gold);color:var(--navy);transform:scale(1.1)}
+.step-label{font-size:.85rem;color:var(--light-grey);line-height:1.5}
+
+.types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.type-card{border-radius:4px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.25);transition:transform .3s,box-shadow .3s}
+.type-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.35)}
+.type-h{padding:.9rem 1.4rem;font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700}
+.type-b{padding:1.4rem;background:rgba(255,255,255,.04);font-size:.85rem;line-height:1.7;color:var(--grey)}
+.type-fiat .type-h{background:var(--green)}.type-crypto .type-h{background:var(--teal)}.type-algo .type-h{background:var(--red)}
+
+.sovereignty-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:3rem;align-items:start}
+@media(max-width:900px){.sovereignty-layout{grid-template-columns:1fr}}
+.big-stat-box{background:var(--navy);border-radius:4px;padding:2.5rem 2rem;text-align:center;border:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden}
+.big-stat-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--red)}
+.bsb-label{font-size:.75rem;font-family:'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:1.2rem}
+.bsb-num{font-family:'Syne',sans-serif;font-size:6.5rem;font-weight:800;color:var(--red);line-height:1;margin-bottom:.4rem}
+.bsb-desc{font-size:.88rem;color:var(--grey);line-height:1.6;margin-bottom:.8rem}
+.bsb-src{font-size:.68rem;color:var(--dark-grey);font-style:italic}
+.risks-list{display:flex;flex-direction:column;gap:.9rem}
+.risk-item{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 1.4rem;background:var(--navy);border-left:3px solid var(--red);border-radius:0 4px 4px 0;transition:transform .2s,border-color .2s}
+.risk-item:hover{transform:translateX(4px);border-color:var(--gold)}
+.risk-n{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--red);min-width:1.8rem;line-height:1}
+.risk-t{font-size:.88rem;color:var(--light-grey);line-height:1.5}
+.sol-note{margin-top:2rem;padding:1.4rem 1.8rem;background:var(--gold-pale);color:var(--navy);border-radius:4px;border-left:4px solid var(--gold);font-size:.88rem;line-height:1.7}
+
+.players-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+@media(max-width:900px){.players-grid{grid-template-columns:1fr}}
+.pcol-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;padding:.7rem 1.4rem;margin-bottom:1.2rem;border-radius:3px}
+.us-col .pcol-title{background:#1A3A6B}.eu-col .pcol-title{background:var(--teal)}
+.player-card{padding:1.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:4px;margin-bottom:.9rem;transition:background .2s,transform .2s}
+.player-card:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.player-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem}
+.player-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700}
+.us-col .player-name{color:#8BB3F0}.eu-col .player-name{color:#7DD3D5}
+.player-share{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--gold);font-weight:500}
+.player-desc{font-size:.83rem;color:var(--grey);line-height:1.6}
+
+.reg-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:1.8rem}
+.reg-table thead tr{background:var(--navy-mid)}
+.reg-table th{padding:.9rem 1.4rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;text-align:left}
+.reg-table th:first-child{color:var(--grey)}.reg-table th:nth-child(2){color:var(--gold-light)}.reg-table th:nth-child(3){color:#7DD3D5}
+.reg-table tbody tr:nth-child(odd){background:rgba(255,255,255,.03)}.reg-table tbody tr:nth-child(even){background:rgba(255,255,255,.015)}
+.reg-table tbody tr{transition:background .2s}.reg-table tbody tr:hover{background:rgba(232,160,32,.06)}
+.reg-table td{padding:.8rem 1.4rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--light-grey);vertical-align:middle}
+.reg-table td:first-child{color:var(--grey);font-weight:500;font-size:.82rem}
+.conv-badge{display:inline-block;background:rgba(232,160,32,.12);border:1px solid rgba(232,160,32,.35);color:var(--gold);padding:.55rem 1.4rem;border-radius:2px;font-size:.8rem;font-family:'DM Mono',monospace;letter-spacing:.03em;line-height:1.6}
+
+.channels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem}
+@media(max-width:900px){.channels-grid{grid-template-columns:1fr}}
+.channel-card{border-radius:4px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2);transition:transform .3s}
+.channel-card:hover{transform:translateY(-5px)}
+.ch-header{padding:1.1rem 1.4rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem}
+.ch-body{padding:1.4rem;background:rgba(26,43,74,.8);font-size:.85rem;line-height:1.8;color:var(--grey);min-height:190px}
+.ch-body strong{color:var(--white)}
+.channel-card.ch-red .ch-header{background:var(--red)}.channel-card.ch-teal .ch-header{background:var(--teal)}.channel-card.ch-gold .ch-header{background:var(--gold);color:var(--navy)}
+.empirical-box{background:var(--navy-mid);border-left:4px solid var(--gold);padding:1.8rem 2.2rem;border-radius:0 4px 4px 0}
+.emp-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--gold);margin-bottom:.6rem}
+.emp-text{font-size:.88rem;color:var(--light-grey);line-height:1.7}
+
+.principles-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:2rem}
+@media(max-width:700px){.principles-grid{grid-template-columns:1fr}}
+.principle-card{display:flex;gap:1.4rem;align-items:flex-start;padding:1.8rem;border-radius:4px;background:var(--navy);border:1px solid rgba(255,255,255,.07);transition:border-color .2s,transform .2s}
+.principle-card:hover{transform:translateY(-3px)}
+.principle-card:nth-child(1):hover{border-color:var(--gold)}.principle-card:nth-child(2):hover{border-color:var(--teal)}.principle-card:nth-child(3):hover{border-color:var(--green)}.principle-card:nth-child(4):hover{border-color:var(--orange)}
+.principle-card:nth-child(1){border-top:3px solid var(--gold)}.principle-card:nth-child(2){border-top:3px solid var(--teal)}.principle-card:nth-child(3){border-top:3px solid var(--green)}.principle-card:nth-child(4){border-top:3px solid var(--orange)}
+.p-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;line-height:1;min-width:2.2rem}
+.principle-card:nth-child(1) .p-num{color:var(--gold)}.principle-card:nth-child(2) .p-num{color:var(--teal)}.principle-card:nth-child(3) .p-num{color:var(--green)}.principle-card:nth-child(4) .p-num{color:var(--orange)}
+.p-content h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.p-content p{font-size:.85rem;color:var(--grey);line-height:1.6}
+
+.cbdc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2rem}
+@media(max-width:900px){.cbdc-grid{grid-template-columns:1fr}}
+.cbdc-feat{display:flex;flex-direction:column;gap:.5rem}
+.cbdc-feat-item{display:flex;align-items:center;gap:.8rem;padding:.65rem .9rem;border-radius:3px;font-size:.88rem;transition:background .2s}
+.cbdc-feat-item:hover{background:rgba(13,115,119,.1)}
+.cbdc-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.cbdc-cmp{width:100%;border-collapse:collapse;font-size:.85rem}
+.cbdc-cmp th{padding:.7rem 1rem;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;text-align:center;background:rgba(255,255,255,.05);border-bottom:2px solid rgba(255,255,255,.1)}
+.cbdc-cmp th:first-child{text-align:left;color:var(--grey)}.cbdc-cmp th:nth-child(2){color:var(--green)}.cbdc-cmp th:nth-child(3){color:var(--red)}
+.cbdc-cmp td{padding:.7rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);text-align:center;color:var(--grey)}
+.cbdc-cmp td:first-child{text-align:left;font-weight:500;color:var(--light-grey)}
+.cbdc-cmp td.ok{color:var(--green);font-weight:700}.cbdc-cmp td.nok{color:var(--red);font-weight:700}
+.usa-warn{background:rgba(232,160,32,.07);border:1px solid rgba(232,160,32,.28);border-radius:4px;padding:1.4rem 1.8rem;font-size:.88rem;line-height:1.7;color:var(--light-grey)}
+.usa-warn strong{color:var(--gold)}
+
+.banks-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem}
+@media(max-width:700px){.banks-grid{grid-template-columns:1fr}}
+.banks-box{border-radius:4px;overflow:hidden}
+.banks-box-hdr{padding:.9rem 1.4rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem}
+.banks-box.threat .banks-box-hdr{background:var(--red)}.banks-box.response .banks-box-hdr{background:var(--green)}
+.banks-box-body{padding:1.4rem;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:.55rem}
+.banks-item{display:flex;gap:.55rem;align-items:flex-start;font-size:.85rem;color:var(--grey);line-height:1.5}
+.banks-item::before{content:'→';color:var(--gold);flex-shrink:0;font-size:.72rem;margin-top:.15rem}
+.revolut-card{background:var(--white);color:var(--navy);border-radius:4px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.3)}
+.rev-hdr{background:var(--gold);padding:1.1rem 1.8rem;display:flex;align-items:center;gap:1rem}
+.rev-logo{width:2.3rem;height:2.3rem;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;color:var(--white)}
+.rev-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy)}
+.rev-sub{font-size:.8rem;color:rgba(26,43,74,.7)}
+.rev-stats{display:flex;border-bottom:1px solid var(--light-grey)}
+.rev-stat{flex:1;padding:1rem 1.2rem;border-right:1px solid var(--light-grey);text-align:center}
+.rev-stat:last-child{border-right:none}
+.rev-sv{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--navy)}
+.rev-sl{font-size:.72rem;color:var(--dark-grey)}
+.rev-body{padding:1.4rem 1.8rem;font-size:.88rem;color:var(--dark-grey);line-height:1.7}
+
+.strat-levels{display:flex;flex-direction:column;gap:1.4rem}
+.strat-level{border-radius:4px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.strat-hdr{padding:1.1rem 1.8rem;font-family:'Syne',sans-serif;font-weight:700;font-size:1rem}
+.strat-level.retail .strat-hdr{background:var(--teal)}.strat-level.wholesale .strat-hdr{background:var(--navy-mid)}
+.strat-body{padding:1.5rem 1.8rem;background:rgba(255,255,255,.03);display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+@media(max-width:700px){.strat-body{grid-template-columns:1fr}}
+.strat-item{font-size:.86rem;color:var(--grey);line-height:1.6;padding-left:.9rem;border-left:2px solid rgba(255,255,255,.12)}
+.strat-item strong{display:block;color:var(--light-grey);margin-bottom:.25rem;font-size:.9rem}
+
+.synth-list{display:flex;flex-direction:column;gap:.9rem}
+.synth-item{display:grid;grid-template-columns:3rem 4.5rem 1fr;gap:1.4rem;align-items:center;padding:1.4rem 1.8rem;background:rgba(255,255,255,.04);border-radius:4px;border:1px solid rgba(255,255,255,.06);transition:background .2s,transform .2s}
+.synth-item:hover{background:rgba(255,255,255,.07);transform:translateX(4px)}
+.syn-n{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--gold);text-align:center}
+.syn-src{background:var(--navy-mid);padding:.4rem .5rem;border-radius:3px;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--gold-light);text-align:center;line-height:1.4}
+.syn-t{font-size:.9rem;color:var(--light-grey);line-height:1.6}
+@media(max-width:600px){.synth-item{grid-template-columns:2.5rem 3.5rem 1fr;gap:1rem}}
+
+footer{background:#0D1B2E;padding:2.5rem 5vw;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-brand{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--gold)}
+.footer-srcs{display:flex;flex-wrap:wrap;gap:.4rem;max-width:580px}
+.footer-src{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--dark-grey);padding:.2rem .55rem;border:1px solid rgba(255,255,255,.06);border-radius:2px}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">STABLECOINS</div>
   <ul class="nav-links">
     <li><a href="#definition">Définition</a></li>
+    <li><a href="#why">Pourquoi ?</a></li>
     <li><a href="#souverainete">Souveraineté</a></li>
     <li><a href="#acteurs">Acteurs</a></li>
     <li><a href="#regulation">Régulation</a></li>
@@ -1052,592 +366,712 @@ nav {
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="hero-gold-bar"></div>
+  <div class="hero-bar"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Analyse — 7 sources académiques &amp; institutionnelles · 2020–2025</p>
-    <h1 class="hero-title">Les<br><span>Stable</span>coins</h1>
-    <p class="hero-subtitle">La monnaie numérique privée qui défie les banques centrales — fonctionnement, acteurs, régulation et enjeux de souveraineté monétaire.</p>
+    <p class="hero-eyebrow">7 sources académiques &amp; institutionnelles · 2020–2025</p>
+    <h1 class="hero-title">Les<br><span>Stable</span><br>coins</h1>
+    <p class="hero-sub">La monnaie numérique privée qui défie les banques centrales — et pourquoi le système actuel coûte trop cher, trop lentement.</p>
+    <a href="#why" class="hero-cta">Découvrir →</a>
     <div class="hero-tags">
       <span class="tag">Blockchain / DLT</span>
       <span class="tag">MiCA · GENIUS Act</span>
       <span class="tag">Euro Numérique</span>
-      <span class="tag">Politique Monétaire</span>
-      <span class="tag">Souveraineté</span>
+      <span class="tag">Souveraineté monétaire</span>
     </div>
   </div>
-  <div class="hero-sources">
-    <span class="src-badge">BIS WP 905 · Arner, Auer &amp; Frost · 2020</span>
-    <span class="src-badge">Banque de France · Bénassy-Quéré · 2025</span>
-    <span class="src-badge">Billet BCE 416 · Dufouleur · 2025</span>
-    <span class="src-badge">BCE WP 3199 · Altavilla et al. · 2025</span>
-    <span class="src-badge">FMI Blog · Adrian et al. · 2025</span>
-    <span class="src-badge">WEF · 2025</span>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
     <span>SCROLL</span>
   </div>
 </section>
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-value">300 Mds $</div>
-    <div class="stat-label">Capitalisation totale 2025</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value">23 000 Mds $</div>
-    <div class="stat-label">Volume annuel 2024 (FMI)</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value">99%</div>
-    <div class="stat-label">Adossés au dollar US</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-value">137</div>
-    <div class="stat-label">Projets CBDC dans le monde</div>
-  </div>
+  <div class="stat-item"><div class="stat-val">300 Mds $</div><div class="stat-lbl">Capitalisation 2025</div></div>
+  <div class="stat-item"><div class="stat-val">23 000 Mds $</div><div class="stat-lbl">Volume annuel 2024</div></div>
+  <div class="stat-item"><div class="stat-val">99%</div><div class="stat-lbl">Adossés au dollar</div></div>
+  <div class="stat-item"><div class="stat-val">137</div><div class="stat-lbl">Projets CBDC mondiaux</div></div>
 </div>
 
-<!-- DEFINITION -->
-<section id="definition">
-  <div class="section-label">01 / Définition</div>
-  <h2 class="section-title reveal">Qu'est-ce qu'un stablecoin ?</h2>
-  <p class="section-sub reveal">Une idée ancienne (XVIIe siècle), une technologie nouvelle — BIS Working Paper No 905, Arner, Auer &amp; Frost (2020)</p>
+<!-- ══════════════════════════════
+     WHY — INTERACTIVE COMPARISONS
+     ══════════════════════════════ -->
+<section id="why">
+  <div class="sec-label">01 / Pourquoi les stablecoins ?</div>
+  <h2 class="sec-title reveal">Le système actuel coûte cher.<br>Les stablecoins changent ça.</h2>
+  <p class="sec-sub reveal">FMI (Adrian et al., 2025) · BIS Working Paper No 905 (Arner, Auer &amp; Frost, 2020)</p>
 
-  <div class="compare-grid reveal">
-    <div class="compare-card bitcoin">
-      <div class="compare-card-title">Bitcoin</div>
-      <div class="compare-card-sub">Cryptomonnaie pure, volatile</div>
-      <div class="compare-big-val">±50%</div>
-      <p style="font-size:0.85rem;color:var(--grey)">de variation annuelle — inutilisable comme moyen de paiement stable</p>
+  <!-- SCENARIO TABS -->
+  <div class="scenario-tabs reveal" id="scenarioTabs">
+    <button class="scenario-tab active" onclick="showScenario('remittance')">💸 Envoi d'argent à l'étranger</button>
+    <button class="scenario-tab" onclick="showScenario('business')">🏢 Paiement B2B international</button>
+    <button class="scenario-tab" onclick="showScenario('ecommerce')">🛒 E-commerce transfrontalier</button>
+  </div>
+
+  <!-- RACE WIDGET -->
+  <div class="race-container reveal" id="raceWidget">
+    <div class="race-title" id="raceTitle">💸 Envoyer 500 € du France vers le Maroc</div>
+    <div class="race-desc" id="raceDesc">Un travailleur migrant envoie son salaire à sa famille. Observez la différence de vitesse et de coût entre le système bancaire traditionnel (SWIFT) et un stablecoin.</div>
+    <div class="race-tracks">
+      <div class="race-track">
+        <div class="track-header">
+          <span class="track-name" style="color:var(--red)">🏦 Virement SWIFT / Western Union</span>
+          <span class="track-status" id="swiftStatus" style="background:rgba(192,57,43,.15);color:var(--red)">En attente</span>
+        </div>
+        <div class="track-bar-bg">
+          <div class="track-bar track-swift" id="swiftBar"></div>
+        </div>
+        <div class="track-info" id="swiftInfo">
+          <span>⏱ Délai : <strong style="color:var(--red)" id="swiftTime">2–5 jours</strong></span>
+          <span>💸 Frais : <strong style="color:var(--red)" id="swiftFee">jusqu'à 20%</strong></span>
+          <span>🏛 Intermédiaires : <strong style="color:var(--red)">3–5 banques</strong></span>
+        </div>
+      </div>
+      <div class="race-track">
+        <div class="track-header">
+          <span class="track-name" style="color:var(--green)">⚡ Stablecoin (USDC / EURC)</span>
+          <span class="track-status" id="stableStatus" style="background:rgba(29,138,79,.15);color:var(--green)">En attente</span>
+        </div>
+        <div class="track-bar-bg">
+          <div class="track-bar track-stable" id="stableBar"></div>
+        </div>
+        <div class="track-info" id="stableInfo">
+          <span>⏱ Délai : <strong style="color:var(--green)" id="stableTime">~10 secondes</strong></span>
+          <span>💸 Frais : <strong style="color:var(--green)" id="stableFee">0,01–0,5%</strong></span>
+          <span>🔗 Intermédiaires : <strong style="color:var(--green)">0 (blockchain)</strong></span>
+        </div>
+      </div>
     </div>
-    <div class="compare-card stablecoin">
-      <div class="compare-card-title">Stablecoin</div>
-      <div class="compare-card-sub">Ancré au dollar ou à l'euro</div>
-      <div class="compare-big-val">= 1 $</div>
-      <p style="font-size:0.85rem;color:var(--grey)">valeur constante — combine la rapidité des cryptos et la stabilité des monnaies</p>
+    <div class="winner-banner" id="winnerBanner"></div>
+    <button class="race-btn" id="raceBtn" onclick="startRace()">▶ Lancer la simulation</button>
+  </div>
+
+  <!-- COST CALCULATOR -->
+  <div class="calc-widget reveal">
+    <div style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.5rem">🧮 Calculez vos économies</div>
+    <div style="font-size:.88rem;color:var(--grey);margin-bottom:1.8rem;line-height:1.6">Entrez un montant et une destination pour comparer les frais réels entre SWIFT et un stablecoin.</div>
+    <div class="calc-top">
+      <div>
+        <label class="calc-label">Montant à envoyer</label>
+        <div class="calc-input-wrap">
+          <span class="calc-currency">€</span>
+          <input type="number" class="calc-input" id="calcAmount" value="1000" min="1" oninput="updateCalc()">
+        </div>
+      </div>
+      <div>
+        <label class="calc-label">Destination</label>
+        <select class="calc-select" id="calcDest" onchange="updateCalc()">
+          <option value="8,3">Maroc (frais SWIFT ~8%)</option>
+          <option value="12,2.5">Sénégal (frais SWIFT ~12%)</option>
+          <option value="15,3">Philippines (frais SWIFT ~15%)</option>
+          <option value="6,1.5">Mexique (frais SWIFT ~6%)</option>
+          <option value="4,0.8">Zone Euro (frais SWIFT ~4%)</option>
+          <option value="20,4">Somalie (frais SWIFT ~20%)</option>
+        </select>
+      </div>
     </div>
-    <div class="compare-card fiat">
-      <div class="compare-card-title">Euro / Dollar</div>
-      <div class="compare-card-sub">Monnaie officielle d'État</div>
-      <div class="compare-big-val">Référence</div>
-      <p style="font-size:0.85rem;color:var(--grey)">émise par banque centrale — le stablecoin en est une représentation privée numérique</p>
+    <div class="calc-results">
+      <div class="calc-result-box swift">
+        <div class="calc-result-header">🏦 Virement SWIFT traditionnel</div>
+        <div class="calc-result-body">
+          <div class="calc-row"><span class="calc-row-label">Frais de transfert</span><span class="calc-row-val bad" id="swiftFeeAmt">–</span></div>
+          <div class="calc-row"><span class="calc-row-label">Spread taux de change</span><span class="calc-row-val bad" id="swiftFx">–</span></div>
+          <div class="calc-divider"></div>
+          <div class="calc-row"><span class="calc-row-label">Total frais</span><span class="calc-row-val bad big" id="swiftTotal">–</span></div>
+          <div class="calc-row"><span class="calc-row-label">Montant reçu</span><span class="calc-row-val bad" id="swiftReceived">–</span></div>
+          <div class="calc-row"><span class="calc-row-label">Délai</span><span class="calc-row-val" style="color:var(--grey)" id="swiftDays">2–5 jours</span></div>
+        </div>
+      </div>
+      <div class="calc-result-box stable">
+        <div class="calc-result-header">⚡ Stablecoin (EURC / USDC)</div>
+        <div class="calc-result-body">
+          <div class="calc-row"><span class="calc-row-label">Frais réseau blockchain</span><span class="calc-row-val good" id="stableFeeAmt">–</span></div>
+          <div class="calc-row"><span class="calc-row-label">Spread taux de change</span><span class="calc-row-val good" id="stableFx">–</span></div>
+          <div class="calc-divider"></div>
+          <div class="calc-row"><span class="calc-row-label">Total frais</span><span class="calc-row-val good big" id="stableTotal">–</span></div>
+          <div class="calc-row"><span class="calc-row-label">Montant reçu</span><span class="calc-row-val good" id="stableReceived">–</span></div>
+          <div class="calc-row"><span class="calc-row-label">Délai</span><span class="calc-row-val" style="color:var(--grey)">~10 secondes</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="savings-highlight">
+      <div class="savings-big" id="savingsBig">–</div>
+      <div class="savings-label" id="savingsLabel">d'économies en utilisant un stablecoin</div>
     </div>
   </div>
 
-  <div class="history-note reveal">
-    <strong>Note historique (BIS, 2020)</strong>
-    L'idée n'est pas nouvelle : la Banque d'Amsterdam du XVIIe siècle avait une structure économique similaire. Les Money Market Funds et la monnaie électronique des années 1990 en sont aussi des précurseurs. La blockchain apporte la dimension décentralisée, programmable et sans intermédiaire — avec le risque supplémentaire de bank runs auto-réalisateurs.
+  <!-- JOURNEY DIAGRAM -->
+  <div class="journey-container reveal">
+    <div style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.4rem">🗺️ Le parcours d'un virement</div>
+    <div style="font-size:.88rem;color:var(--grey);margin-bottom:1.5rem">Comparez étape par étape les deux parcours</div>
+    <div class="journey-tabs">
+      <button class="journey-tab active" onclick="showJourney('swift')">🏦 SWIFT traditionnel</button>
+      <button class="journey-tab" onclick="showJourney('stable')">⚡ Stablecoin</button>
+    </div>
+    <div class="journey-display active" id="journeySwift">
+      <div class="journey-steps">
+        <div class="j-step bad"><div class="j-step-circle">1</div><div class="j-step-label">Votre banque en France</div></div>
+        <div class="j-arrow">→</div>
+        <div class="j-step bad"><div class="j-step-circle">2</div><div class="j-step-label">Banque correspondante FR</div></div>
+        <div class="j-arrow">→</div>
+        <div class="j-step bad"><div class="j-step-circle">3</div><div class="j-step-label">Réseau SWIFT international</div></div>
+        <div class="j-arrow">→</div>
+        <div class="j-step bad"><div class="j-step-circle">4</div><div class="j-step-label">Banque correspondante locale</div></div>
+        <div class="j-arrow">→</div>
+        <div class="j-step bad"><div class="j-step-circle">5</div><div class="j-step-label">Banque du destinataire</div></div>
+      </div>
+      <div class="j-meta">
+        <div class="j-meta-item"><div class="j-meta-key">Étapes</div><div class="j-meta-val bad">5 intermédiaires</div></div>
+        <div class="j-meta-item"><div class="j-meta-key">Durée moyenne</div><div class="j-meta-val bad">3 jours ouvrés</div></div>
+        <div class="j-meta-item"><div class="j-meta-key">Frais cumulés</div><div class="j-meta-val bad">6–20%</div></div>
+        <div class="j-meta-item"><div class="j-meta-key">Disponibilité</div><div class="j-meta-val bad">Heures ouvrées</div></div>
+      </div>
+    </div>
+    <div class="journey-display" id="journeyStable">
+      <div class="journey-steps">
+        <div class="j-step good"><div class="j-step-circle">1</div><div class="j-step-label">Vous convertissez € → stablecoin</div></div>
+        <div class="j-arrow">→</div>
+        <div class="j-step good"><div class="j-step-circle">2</div><div class="j-step-label">Transaction sur blockchain (validée en ~10s)</div></div>
+        <div class="j-arrow">→</div>
+        <div class="j-step good"><div class="j-step-circle">3</div><div class="j-step-label">Destinataire reçoit les tokens</div></div>
+        <div class="j-arrow">→</div>
+        <div class="j-step good"><div class="j-step-circle">4</div><div class="j-step-label">Conversion stablecoin → monnaie locale</div></div>
+      </div>
+      <div class="j-meta">
+        <div class="j-meta-item"><div class="j-meta-key">Étapes</div><div class="j-meta-val good">0 intermédiaire</div></div>
+        <div class="j-meta-item"><div class="j-meta-key">Durée</div><div class="j-meta-val good">~10 secondes</div></div>
+        <div class="j-meta-item"><div class="j-meta-key">Frais</div><div class="j-meta-val good">0,01–0,5%</div></div>
+        <div class="j-meta-item"><div class="j-meta-key">Disponibilité</div><div class="j-meta-val good">24h/24 · 7j/7</div></div>
+      </div>
+    </div>
   </div>
 
-  <h3 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin:3.5rem 0 1.5rem;color:var(--white)">Comment ça marche ? Le mécanisme de réserve</h3>
-
-  <div class="steps-flow reveal">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-label">Client dépose<br><strong>100 $</strong><br>chez l'émetteur</div>
+  <!-- USE CASES -->
+  <h3 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin:3.5rem 0 1rem" class="reveal">Autres cas d'usage concrets</h3>
+  <div class="use-cases-grid reveal">
+    <div class="use-case-card uc-card-1">
+      <div class="uc-header">
+        <span class="uc-emoji">🌍</span>
+        <div class="uc-title">Inclusion financière</div>
+        <div class="uc-subtitle">1,4 milliard de personnes sans compte bancaire</div>
+      </div>
+      <div class="uc-body">
+        <div class="uc-before-after">
+          <div class="uc-before">
+            <div class="uc-col-label">Avant</div>
+            <div class="uc-metric">Exclus</div>
+            <div class="uc-metric-sub">Pas de banque,<br>pas de services</div>
+          </div>
+          <div class="uc-after">
+            <div class="uc-col-label">Après</div>
+            <div class="uc-metric">Smartphone</div>
+            <div class="uc-metric-sub">Accès complet<br>aux paiements</div>
+          </div>
+        </div>
+        <div class="uc-desc">Un simple téléphone suffit pour accéder aux stablecoins. L'Afrique, l'Asie du Sud-Est et l'Amérique latine montrent déjà des taux d'adoption élevés (FMI, 2025).</div>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-label">Émetteur investit<br><strong>en bons du Trésor</strong><br>ou cash sécurisé</div>
+    <div class="use-case-card uc-card-2">
+      <div class="uc-header">
+        <span class="uc-emoji">📱</span>
+        <div class="uc-title">Smart contracts & IoT</div>
+        <div class="uc-subtitle">Paiements programmables automatiques</div>
+      </div>
+      <div class="uc-body">
+        <div class="uc-before-after">
+          <div class="uc-before">
+            <div class="uc-col-label">Avant</div>
+            <div class="uc-metric">Manuel</div>
+            <div class="uc-metric-sub">Facture → vérif<br>→ paiement</div>
+          </div>
+          <div class="uc-after">
+            <div class="uc-col-label">Après</div>
+            <div class="uc-metric">Automatique</div>
+            <div class="uc-metric-sub">Livraison confirmée<br>→ paiement immédiat</div>
+          </div>
+        </div>
+        <div class="uc-desc">Le paiement se déclenche automatiquement quand une condition est remplie — livraison confirmée, capteur IoT validé, rapport d'inspection reçu (BIS WP 905, 2020).</div>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-label">Émet <strong>100 tokens</strong><br>sur blockchain<br>= 100 $</div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-label">Rachat garanti<br><strong>1 token = 1 $</strong><br>à tout moment</div>
+    <div class="use-case-card uc-card-3">
+      <div class="uc-header">
+        <span class="uc-emoji">🔥</span>
+        <div class="uc-title">Hyperinflation</div>
+        <div class="uc-subtitle">Protéger son épargne quand la monnaie s'effondre</div>
+      </div>
+      <div class="uc-body">
+        <div class="uc-before-after">
+          <div class="uc-before">
+            <div class="uc-col-label">Monnaie locale</div>
+            <div class="uc-metric">-90%</div>
+            <div class="uc-metric-sub">Valeur perdue<br>en 1 an (ex: VES)</div>
+          </div>
+          <div class="uc-after">
+            <div class="uc-col-label">Stablecoin USD</div>
+            <div class="uc-metric">= 1 $</div>
+            <div class="uc-metric-sub">Valeur préservée,<br>accessible 24h/24</div>
+          </div>
+        </div>
+        <div class="uc-desc">En Argentine, Venezuela et Zimbabwe, les populations utilisent déjà les stablecoins pour protéger leur pouvoir d'achat face à l'hyperinflation.</div>
+      </div>
     </div>
   </div>
 
-  <h3 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin:3.5rem 0 1.5rem;color:var(--white)">Les 3 types de garanties</h3>
-
-  <div class="types-grid reveal">
-    <div class="type-card type-fiat">
-      <div class="type-header">✅ Adossés à la monnaie fiat</div>
-      <div class="type-body">Cash, bons du Trésor à court terme, dépôts bancaires.<br><br><strong style="color:var(--white)">Ex : USDT, USDC, EURC</strong><br><br>Les plus stables. Réglés par MiCA (UE) et GENIUS Act (USA). Risque : opacité des réserves — cas Tether accusé en 2019 par le NY Attorney General d'avoir prêté 700M$ à une entité affiliée sans garantie suffisante.</div>
-    </div>
-    <div class="type-card type-crypto">
-      <div class="type-header">⚠️ Adossés à des crypto-actifs</div>
-      <div class="type-body">Garantis par d'autres cryptos, sur-collatéralisés pour compenser la volatilité.<br><br><strong style="color:var(--white)">Ex : DAI (MakerDAO)</strong><br><br>Plus transparents car tout est lisible sur la blockchain publique. Risque : la volatilité des actifs sous-jacents peut éroder la garantie.</div>
-    </div>
-    <div class="type-card type-algo">
-      <div class="type-header">❌ Algorithmiques — très risqués</div>
-      <div class="type-body">Stabilité par algorithme uniquement, sans réserve réelle.<br><br><strong style="color:var(--white)">Ex : TerraUSD → effondrement mai 2022</strong><br><br>40 milliards de dollars détruits en 72 heures. BIS (2020) : "sujets à des bank runs auto-réalisateurs, notamment quand les actifs de garantie sont risqués ou opaques."</div>
+  <!-- HYPERINFLATION METER -->
+  <div class="inflation-widget reveal">
+    <div style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.4rem">📊 L'hyperinflation en chiffres</div>
+    <div style="font-size:.88rem;color:var(--grey);margin-bottom:1.8rem">Sélectionnez un pays pour voir l'inflation annuelle — et pourquoi les stablecoins y sont adoptés massivement</div>
+    <div class="inf-grid">
+      <div class="inf-countries" id="infCountries">
+        <button class="inf-country-btn active" onclick="setInflation(this,'Venezuela',6500,'#e74c3c','La devise bolivar a perdu 99% de sa valeur en 5 ans. Les Vénézuéliens ont massivement adopté USDT pour leurs transactions quotidiennes.')" data-rate="6500%">🇻🇪 Venezuela <span class="inf-rate-badge">6 500%</span></button>
+        <button class="inf-country-btn" onclick="setInflation(this,'Zimbabwe',480,'#e67e22','Après l\'hyperinflation historique de 2008, le Zimbabwe traverse une nouvelle crise. Les stablecoins servent de refuge pour l\'épargne.')" data-rate="480%">🇿🇼 Zimbabwe <span class="inf-rate-badge">480%</span></button>
+        <button class="inf-country-btn" onclick="setInflation(this,'Argentine',143,'#f39c12','L\'inflation en Argentine pousse les habitants à convertir leurs pesos en USDT dès réception de leur salaire.')" data-rate="143%">🇦🇷 Argentine <span class="inf-rate-badge">143%</span></button>
+        <button class="inf-country-btn" onclick="setInflation(this,'Turquie',65,'#d4ac0d','L\'inflation turque a poussé les Turcs à adopter les stablecoins en USD comme réserve de valeur alternative à la livre.')" data-rate="65%">🇹🇷 Turquie <span class="inf-rate-badge">65%</span></button>
+        <button class="inf-country-btn" onclick="setInflation(this,'France',2.3,'#27ae60','La France bénéficie d\'une inflation maîtrisée. Les stablecoins y ont moins d\'intérêt comme refuge mais sont utiles pour les paiements transfrontaliers.')" data-rate="2.3%">🇫🇷 France <span class="inf-rate-badge">2.3%</span></button>
+      </div>
+      <div class="inf-display">
+        <div class="inf-meter">
+          <svg viewBox="0 0 120 120" width="200" height="200">
+            <circle class="inf-meter-bg" cx="60" cy="60" r="50"/>
+            <circle class="inf-meter-fill" id="inflationArc" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314" stroke="var(--red)"/>
+          </svg>
+          <div class="inf-center-text">
+            <div class="inf-pct" id="inflationPct">6 500%</div>
+            <div class="inf-pct-label" id="inflationCountry">Venezuela</div>
+          </div>
+        </div>
+        <div class="inf-conclusion" id="inflationDesc">La devise bolivar a perdu 99% de sa valeur en 5 ans. Les Vénézuéliens ont massivement adopté USDT pour leurs transactions quotidiennes.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SOVEREIGNTY -->
-<section id="souverainete" class="light">
-  <div class="section-label">02 / Souveraineté externe</div>
-  <h2 class="section-title reveal">L'Europe dépendante des acteurs non-européens</h2>
-  <p class="section-sub reveal">Banque de France — Bénassy-Quéré (sept. 2025) · BCE (Cipollone, 2025) · Commission européenne (2024)</p>
+<!-- DEFINITION -->
+<section id="definition" class="light">
+  <div class="sec-label">02 / Définition</div>
+  <h2 class="sec-title reveal">Qu'est-ce qu'un stablecoin ?</h2>
+  <p class="sec-sub reveal">Une idée ancienne (XVIIe siècle), une technologie nouvelle — BIS Working Paper No 905 (2020)</p>
+  <div class="compare-grid reveal">
+    <div class="compare-card bitcoin"><div class="cc-title">Bitcoin</div><div class="cc-sub">Cryptomonnaie pure, volatile</div><div class="cc-val">±50%</div><p style="font-size:.83rem;color:var(--dark-grey)">de variation annuelle — inutilisable comme moyen de paiement stable</p></div>
+    <div class="compare-card stablecoin"><div class="cc-title">Stablecoin</div><div class="cc-sub">Ancré au dollar ou à l'euro</div><div class="cc-val">= 1 $</div><p style="font-size:.83rem;color:var(--dark-grey)">valeur constante — combine rapidité des cryptos et stabilité des monnaies</p></div>
+    <div class="compare-card fiat"><div class="cc-title">Euro / Dollar</div><div class="cc-sub">Monnaie officielle d'État</div><div class="cc-val">Référence</div><p style="font-size:.83rem;color:var(--dark-grey)">le stablecoin en est une représentation privée numérique sur blockchain</p></div>
+  </div>
+  <div style="border-left:3px solid var(--gold);padding:1.4rem 1.8rem;background:rgba(232,160,32,.07);border-radius:0 4px 4px 0;margin-bottom:3rem" class="reveal">
+    <strong style="font-family:'Syne',sans-serif;color:var(--teal);font-size:.85rem;letter-spacing:.05em;display:block;margin-bottom:.4rem">Note historique — BIS (2020)</strong>
+    L'idée n'est pas nouvelle : la Banque d'Amsterdam du XVIIe siècle avait une structure économique similaire. Les MMF et la monnaie électronique des années 90 en sont des précurseurs. La blockchain apporte la dimension décentralisée et programmable — avec le risque supplémentaire de bank runs auto-réalisateurs.
+  </div>
+  <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem" class="reveal">Comment ça marche ?</h3>
+  <div class="steps-flow reveal">
+    <div class="step"><div class="step-num">1</div><div class="step-label">Client dépose<br><strong>100 $</strong></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-label">Émetteur investit<br><strong>en bons du Trésor</strong></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-label">Émet <strong>100 tokens</strong><br>sur blockchain</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-label">Rachat garanti<br><strong>1 token = 1 $</strong></div></div>
+  </div>
+  <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem" class="reveal">Les 3 types de garanties</h3>
+  <div class="types-grid reveal">
+    <div class="type-card type-fiat"><div class="type-h">✅ Adossés à la monnaie fiat</div><div class="type-b">Cash, bons du Trésor courts, dépôts bancaires.<br><br><strong style="color:var(--white)">Ex : USDT, USDC, EURC</strong><br><br>Les plus stables. Réglés par MiCA et GENIUS Act. Risque : opacité des réserves (cas Tether/NYAG 2019 : 700M$ prêtés sans garantie).</div></div>
+    <div class="type-card type-crypto"><div class="type-h">⚠️ Adossés à des crypto-actifs</div><div class="type-b">Garantis par d'autres cryptos, sur-collatéralisés.<br><br><strong style="color:var(--white)">Ex : DAI (MakerDAO)</strong><br><br>Plus transparents car tout est visible sur la blockchain. Risque : volatilité des actifs de garantie.</div></div>
+    <div class="type-card type-algo"><div class="type-h">❌ Algorithmiques — très risqués</div><div class="type-b">Stabilité par algorithme sans réserve réelle.<br><br><strong style="color:var(--white)">Ex : TerraUSD → effondrement mai 2022</strong><br><br>40 Mds$ détruits en 72h. BIS (2020) : "sujets à des bank runs auto-réalisateurs quand les actifs sont risqués ou opaques."</div></div>
+  </div>
+</section>
 
+<!-- SOVEREIGNTY -->
+<section id="souverainete">
+  <div class="sec-label">03 / Souveraineté externe</div>
+  <h2 class="sec-title reveal">L'Europe dépendante</h2>
+  <p class="sec-sub reveal">Banque de France — Bénassy-Quéré (sept. 2025) · BCE (Cipollone, 2025)</p>
   <div class="sovereignty-layout reveal">
     <div>
-      <div class="big-stat-box">
-        <div class="big-stat-label">Paiements par carte dans la zone euro</div>
-        <div class="big-stat-number">66%</div>
-        <div class="big-stat-desc">traités par Visa &amp; Mastercard — sociétés <strong>américaines</strong>, non européennes</div>
-        <div class="big-stat-source">BCE (Cipollone, 2025)</div>
-      </div>
-      <div class="solution-note" style="margin-top:1.5rem">
-        <strong>Solutions en cours :</strong> Wero (BE, FR, DE, LU, NL) + EuroPA (IT, PT, ES) — pas encore interopérables entre elles. BIS (2020) souligne la nécessité d'une coordination internationale pour éviter la fragmentation.
-      </div>
+      <div class="big-stat-box"><div class="bsb-label">Paiements cartes zone euro</div><div class="bsb-num">66%</div><div class="bsb-desc">traités par Visa &amp; Mastercard — sociétés américaines, non européennes</div><div class="bsb-src">BCE (Cipollone, 2025)</div></div>
+      <div class="sol-note" style="margin-top:1.4rem">Solutions en cours : <strong>Wero</strong> (BE, FR, DE, LU, NL) + <strong>EuroPA</strong> (IT, PT, ES) — pas encore interopérables. BIS (2020) souligne la nécessité d'une coordination internationale pour éviter la fragmentation.</div>
     </div>
     <div class="risks-list">
-      <div class="risk-item">
-        <div class="risk-num">1</div>
-        <div class="risk-text"><strong>15/20 pays</strong> de la zone euro sans solution nationale si Visa/Mastercard suspendent leur service</div>
-      </div>
-      <div class="risk-item">
-        <div class="risk-num">2</div>
-        <div class="risk-text">Frais marchands en forte hausse : <strong>0,27% en 2018 → 0,44% en 2022</strong> (Commission européenne)</div>
-      </div>
-      <div class="risk-item">
-        <div class="risk-num">3</div>
-        <div class="risk-text">ApplePay, Google Pay : acteurs <strong>non-européens</strong> dominent les paiements mobiles</div>
-      </div>
-      <div class="risk-item">
-        <div class="risk-num">4</div>
-        <div class="risk-text"><strong>99% des stablecoins en dollars</strong> → risque de dollarisation numérique de l'épargne européenne</div>
-      </div>
-      <div class="risk-item">
-        <div class="risk-num">5</div>
-        <div class="risk-text"><strong>25 ans après l'euro</strong> : toujours pas de solution pan-européenne interopérable !</div>
-      </div>
+      <div class="risk-item"><div class="risk-n">1</div><div class="risk-t"><strong>15/20 pays</strong> de la zone euro sans solution nationale si Visa/Mastercard suspendent leur service</div></div>
+      <div class="risk-item"><div class="risk-n">2</div><div class="risk-t">Frais marchands en hausse : <strong>0,27% en 2018 → 0,44% en 2022</strong> (Commission européenne)</div></div>
+      <div class="risk-item"><div class="risk-n">3</div><div class="risk-t">ApplePay, Google Pay : acteurs <strong>non-européens</strong> dominent les paiements mobiles</div></div>
+      <div class="risk-item"><div class="risk-n">4</div><div class="risk-t"><strong>99% des stablecoins en dollars</strong> → risque de dollarisation numérique de l'épargne</div></div>
+      <div class="risk-item"><div class="risk-n">5</div><div class="risk-t"><strong>25 ans après l'euro</strong> : toujours pas de solution pan-européenne interopérable !</div></div>
     </div>
   </div>
 </section>
 
 <!-- PLAYERS -->
-<section id="acteurs">
-  <div class="section-label">03 / Acteurs principaux</div>
-  <h2 class="section-title reveal">USA domine · Europe rattrape</h2>
-  <p class="section-sub reveal">Marché dominé à 99% par les États-Unis — BCE WP 3199 (2025) · BIS WP 905 (2020)</p>
-
+<section id="acteurs" class="light">
+  <div class="sec-label">04 / Acteurs principaux</div>
+  <h2 class="sec-title reveal">USA domine · Europe rattrape</h2>
+  <p class="sec-sub reveal">BCE WP 3199 (2025) · BIS WP 905 (2020)</p>
   <div class="players-grid reveal">
     <div class="us-col">
-      <div class="players-column-title">🇺🇸 Acteurs AMÉRICAINS — 90%+ du marché</div>
-      <div class="player-card">
-        <div class="player-header">
-          <span class="player-name">TETHER (USDT)</span>
-          <span class="player-share">~65% du marché</span>
-        </div>
-        <div class="player-desc">Plus grand stablecoin depuis 2014. Réserves majoritairement en bons du Trésor US. Controverse : NY Attorney General 2019 accuse d'avoir prêté 700M$ à une entité affiliée (Bitfinex) sans garantie suffisante. Basé à Hong Kong.</div>
-      </div>
-      <div class="player-card">
-        <div class="player-header">
-          <span class="player-name">CIRCLE (USDC)</span>
-          <span class="player-share">~25% du marché</span>
-        </div>
-        <div class="player-desc">Très transparent, audits réguliers par cabinets indépendants. Préféré des institutions financières. Co-fondateur du consortium Centre. Moteur du GENIUS Act. Interopérable avec MiCA.</div>
-      </div>
-      <div class="player-card">
-        <div class="player-header">
-          <span class="player-name">PAYPAL (PYUSD)</span>
-          <span class="player-share">En croissance</span>
-        </div>
-        <div class="player-desc">Lancé en 2023. Capitalise sur 400M d'utilisateurs existants. Montre comment les Big Tech entrent dans la finance via les stablecoins. Cas d'usage : checkout e-commerce.</div>
-      </div>
+      <div class="pcol-title">🇺🇸 Acteurs AMÉRICAINS — 90%+ du marché</div>
+      <div class="player-card"><div class="player-hdr"><span class="player-name">TETHER (USDT)</span><span class="player-share">~65%</span></div><div class="player-desc">Plus grand stablecoin depuis 2014. Réserves en bons du Trésor US. Controverse NY Attorney General 2019 : 700M$ prêtés à une entité affiliée sans garantie suffisante.</div></div>
+      <div class="player-card"><div class="player-hdr"><span class="player-name">CIRCLE (USDC)</span><span class="player-share">~25%</span></div><div class="player-desc">Très transparent, audits réguliers. Préféré des institutions. Co-fondateur du GENIUS Act. Interopérable avec MiCA.</div></div>
+      <div class="player-card"><div class="player-hdr"><span class="player-name">PAYPAL (PYUSD)</span><span class="player-share">En croissance</span></div><div class="player-desc">Lancé en 2023. 400M utilisateurs existants. Montre comment les Big Tech entrent dans la finance via les stablecoins.</div></div>
     </div>
     <div class="eu-col">
-      <div class="players-column-title">🇪🇺 Acteurs EUROPÉENS — marché émergent</div>
-      <div class="player-card">
-        <div class="player-header">
-          <span class="player-name">EURC (Circle)</span>
-          <span class="player-share">Leader en euros</span>
-        </div>
-        <div class="player-desc">Version euro de l'USDC. Conforme MiCA depuis juin 2024. Réserves 100% en dépôts bancaires européens. Capitalisation ~400M EUR et en croissance rapide. Audits réguliers.</div>
-      </div>
-      <div class="player-card">
-        <div class="player-header">
-          <span class="player-name">SG-Forge (EURCV)</span>
-          <span class="player-share">Institutionnel</span>
-        </div>
-        <div class="player-desc">Émis par Société Générale via filiale dédiée. Pioneer bancaire européen conforme MiCA. Réserve 100% en banques UE. Cible exclusivement les institutions financières.</div>
-      </div>
-      <div class="player-card">
-        <div class="player-header">
-          <span class="player-name">Consortium 9 banques</span>
-          <span class="player-share">Prévu 2026</span>
-        </div>
-        <div class="player-desc">ING, BNP Paribas, Citi, Deutsche Bank + 5 autres préparent un stablecoin euro commun pour 2026. Réponse directe à la domination américaine post-GENIUS Act.</div>
-      </div>
+      <div class="pcol-title">🇪🇺 Acteurs EUROPÉENS — marché émergent</div>
+      <div class="player-card"><div class="player-hdr"><span class="player-name">EURC (Circle)</span><span class="player-share">Leader en euros</span></div><div class="player-desc">Version euro de l'USDC. Conforme MiCA depuis juin 2024. Réserves 100% en dépôts bancaires européens. Capitalisation ~400M EUR.</div></div>
+      <div class="player-card"><div class="player-hdr"><span class="player-name">SG-Forge (EURCV)</span><span class="player-share">Institutionnel</span></div><div class="player-desc">Émis par Société Générale via filiale. Pioneer bancaire européen conforme MiCA. Cible exclusivement les institutions.</div></div>
+      <div class="player-card"><div class="player-hdr"><span class="player-name">Consortium 9 banques</span><span class="player-share">Prévu 2026</span></div><div class="player-desc">ING, BNP, Citi, Deutsche Bank + 5 autres préparent un stablecoin euro commun 2026. Réponse directe à la domination américaine.</div></div>
     </div>
   </div>
 </section>
 
 <!-- REGULATION -->
-<section id="regulation" class="light">
-  <div class="section-label">04 / Réglementation</div>
-  <h2 class="section-title reveal">MiCA vs GENIUS Act</h2>
-  <p class="section-sub reveal">Convergences et différences — World Economic Forum (sept. 2025) · BCE WP 3199 · Annexe 1</p>
-
+<section id="regulation">
+  <div class="sec-label">05 / Réglementation</div>
+  <h2 class="sec-title reveal">MiCA vs GENIUS Act</h2>
+  <p class="sec-sub reveal">World Economic Forum (sept. 2025) · BCE WP 3199 · Annexe 1 (2025)</p>
   <table class="reg-table reveal">
-    <thead>
-      <tr>
-        <th>Critère</th>
-        <th>🇪🇺 MiCA — Europe</th>
-        <th>🇺🇸 GENIUS Act — USA</th>
-      </tr>
-    </thead>
+    <thead><tr><th>Critère</th><th>🇪🇺 MiCA — Europe</th><th>🇺🇸 GENIUS Act — USA</th></tr></thead>
     <tbody>
       <tr><td>Entrée en vigueur</td><td>2024 (pleine application)</td><td>Juillet 2025</td></tr>
-      <tr><td>Réserves exigées</td><td>100% + sur-collatéral possible</td><td>100% (bons du Trésor ≤ 93 jours)</td></tr>
+      <tr><td>Réserves exigées</td><td>100% + sur-collatéral possible</td><td>100% (bons Trésor ≤ 93 jours)</td></tr>
       <tr><td>Dépôts en banques</td><td>Min. 30–60% en banques UE</td><td>Aucune obligation bancaire</td></tr>
-      <tr><td>Supervision</td><td>ABE pour grands émetteurs</td><td>Fédérale si &gt; 10 Mds $</td></tr>
-      <tr><td>Stablecoins devise étrangère</td><td>Plafonnés &lt; 1M tx/jour</td><td>Focalisé USD uniquement</td></tr>
+      <tr><td>Supervision</td><td>ABE pour grands émetteurs</td><td>Fédérale si > 10 Mds$</td></tr>
+      <tr><td>Devise étrangère</td><td>Plafonnés &lt; 1M tx/jour</td><td>Focalisé USD uniquement</td></tr>
       <tr><td>Intérêts aux détenteurs</td><td>Interdits</td><td>Pas encore tranché</td></tr>
-      <tr><td>Entité séparée (banques)</td><td>Non obligatoire</td><td>OBLIGATOIRE — protection clé</td></tr>
+      <tr><td>Entité séparée (banques)</td><td>Non obligatoire</td><td>OBLIGATOIRE</td></tr>
     </tbody>
   </table>
-
-  <div class="convergence-badge reveal">
-    Convergence (WEF, 2025) : réserves 1:1, droit de rachat, lutte AML/CFT, entité licenciée — GENIUS Act plus conservateur sur la maturité des actifs et la séparation bancaire
-  </div>
+  <div class="conv-badge reveal">Convergence (WEF, 2025) : réserves 1:1, droit de rachat, lutte AML/CFT — GENIUS Act plus conservateur sur maturité des actifs et séparation bancaire</div>
 </section>
 
 <!-- RISKS -->
-<section id="risques">
-  <div class="section-label">05 / Risques pour les banques centrales</div>
-  <h2 class="section-title reveal">3 canaux de perturbation monétaire</h2>
-  <p class="section-sub reveal">Résultats empiriques — Billet BCE No 416 (Dufouleur, 2025) · BCE WP 3199 (Altavilla et al., 2025) · BIS WP 905 (2020)</p>
-
+<section id="risques" class="light">
+  <div class="sec-label">06 / Risques pour les banques centrales</div>
+  <h2 class="sec-title reveal">3 canaux de perturbation monétaire</h2>
+  <p class="sec-sub reveal">Billet BCE No 416 (Dufouleur, 2025) · BCE WP 3199 (Altavilla et al., 2025) · BIS WP 905 (2020)</p>
   <div class="channels-grid reveal">
-    <div class="channel-card red">
-      <div class="channel-header">Canal des dépôts bancaires</div>
-      <div class="channel-body">
-        Ménages placent épargne dans stablecoins<br>
-        → banques perdent financement bon marché<br>
-        → hausse du coût du crédit<br>
-        → moins de prêts aux entreprises<br><br>
-        <strong style="color:var(--white)">Chiffre BCE WP 3199 (2025) :</strong><br>
-        100 Mds$ de dépôts perdus<br>
-        = ~50 Mds$ de prêts en moins
-      </div>
-    </div>
-    <div class="channel-card teal">
-      <div class="channel-header">Canal de liquidité interbancaire</div>
-      <div class="channel-body">
-        Moins de demande de monnaie centrale<br>
-        → pression sur taux interbancaires<br>
-        → banque centrale perd sa capacité<br>
-        à piloter les taux directeurs<br><br>
-        <strong style="color:var(--white)">Conséquence :</strong><br>
-        Banques à fort wholesale funding<br>
-        répondent davantage à la Fed<br>
-        qu'à la BCE
-      </div>
-    </div>
-    <div class="channel-card gold">
-      <div class="channel-header">Canal des actifs sans risque</div>
-      <div class="channel-body">
-        Émetteurs achètent massivement<br>
-        des bons du Trésor courts<br>
-        → pression sur les rendements<br>
-        → perturbation du marché REPO<br>
-        utilisé par les banques<br><br>
-        <strong style="color:var(--navy)">Impact modéré si substitution</strong><br>
-        des money market funds seulement
-      </div>
-    </div>
+    <div class="channel-card ch-red"><div class="ch-header">Canal des dépôts bancaires</div><div class="ch-body">Ménages placent épargne dans stablecoins<br>→ banques perdent financement bon marché<br>→ hausse du coût du crédit<br><br><strong>Chiffre BCE (2025) :</strong><br>100 Mds$ de dépôts perdus<br>= ~50 Mds$ de prêts en moins</div></div>
+    <div class="channel-card ch-teal"><div class="ch-header">Canal de liquidité interbancaire</div><div class="ch-body">Moins de demande de monnaie centrale<br>→ pression sur taux interbancaires<br>→ banque centrale perd sa capacité<br>à piloter les taux directeurs<br><br><strong>Conséquence :</strong><br>Banques à fort wholesale funding<br>répondent plus à la Fed qu'à la BCE</div></div>
+    <div class="channel-card ch-gold"><div class="ch-header">Canal des actifs sans risque</div><div class="ch-body">Émetteurs achètent massivement<br>des bons du Trésor courts<br>→ pression sur les rendements<br>→ perturbation du marché REPO<br><br><strong>Impact modéré si substitution</strong><br>des money market funds seulement</div></div>
   </div>
-
   <div class="empirical-box reveal">
-    <div class="empirical-title">📊 Résultat empirique — Billet BCE No 416 (Dufouleur, nov. 2025) + BCE WP 3199 (Altavilla et al., 2025)</div>
-    <div class="empirical-text">Hausse de 10 Mds$ d'USDT → réduction de <strong>seulement 0,7 point de base</strong> du SOFR. Aujourd'hui perturbation <strong>RÉELLE mais LIMITÉE</strong> car les stablecoins restent dans la sphère crypto. Si adoption grand public : impact potentiellement <strong>MASSIF</strong> (effet non-linéaire). La Fed maintient son contrôle via ses outils propres (EFFR non affecté).</div>
+    <div class="emp-title">📊 Résultat empirique — Billet BCE No 416 (Dufouleur, nov. 2025) + BCE WP 3199 (2025)</div>
+    <div class="emp-text">Hausse de 10 Mds$ d'USDT → réduction de <strong>seulement 0,7 point de base</strong> du SOFR. Perturbation <strong>réelle mais limitée</strong> aujourd'hui. Mais l'effet est <strong>non-linéaire</strong> — il explose si l'adoption s'étend au grand public. La Fed maintient son contrôle via ses outils propres (EFFR non affecté).</div>
   </div>
 </section>
 
-<!-- EMBEDDED SUPERVISION -->
-<section class="light">
-  <div class="section-label">05b / Innovation réglementaire</div>
-  <h2 class="section-title reveal">La supervision intégrée</h2>
-  <p class="section-sub reveal">Concept clé — BIS Working Paper No 905 (Arner, Auer &amp; Frost, 2020)</p>
-
-  <p style="font-size:1rem;color:var(--dark-grey);max-width:700px;line-height:1.7;margin-bottom:3rem" class="reveal">
-    Comment réguler efficacement des actifs natifs de la blockchain ? Le BIS propose d'insérer la supervision <strong>directement dans le code</strong> de la blockchain elle-même — permettant au régulateur de lire le registre en temps réel.
-  </p>
-
+<!-- SUPERVISION -->
+<section>
+  <div class="sec-label">07 / Innovation réglementaire</div>
+  <h2 class="sec-title reveal">La supervision intégrée</h2>
+  <p class="sec-sub reveal">BIS Working Paper No 905 — Arner, Auer &amp; Frost (2020)</p>
+  <p style="font-size:.95rem;color:var(--grey);max-width:680px;line-height:1.75;margin-bottom:2.5rem" class="reveal">Le BIS propose d'insérer la supervision <strong style="color:var(--white)">directement dans le code de la blockchain</strong> — le régulateur lit le registre en temps réel sans déclarations manuelles.</p>
   <div class="principles-grid reveal">
-    <div class="principle-card">
-      <div class="principle-num">1</div>
-      <div class="principle-content">
-        <h4>Ancrage légal obligatoire</h4>
-        <p>Le lien entre le token et l'actif doit être garanti par le système juridique — pas seulement par la technologie. Contrats et tribunaux restent indispensables.</p>
-      </div>
-    </div>
-    <div class="principle-card">
-      <div class="principle-num">2</div>
-      <div class="principle-content">
-        <h4>Finalité irréversible</h4>
-        <p>Chaque transaction doit être définitive et irrévocable. Sans finalité légale, les bilans comptables ne sont pas fiables pour la supervision prudentielle.</p>
-      </div>
-    </div>
-    <div class="principle-card">
-      <div class="principle-num">3</div>
-      <div class="principle-content">
-        <h4>Conformité automatisée (RegTech)</h4>
-        <p>Les règles de supervision sont encodées dans la blockchain. Le régulateur lit le registre en temps réel sans que les firmes déclarent manuellement.</p>
-      </div>
-    </div>
-    <div class="principle-card">
-      <div class="principle-num">4</div>
-      <div class="principle-content">
-        <h4>Terrain de jeu équilibré</h4>
-        <p>Objectif : réduire le coût de conformité pour les petits acteurs. Éviter que la régulation crée une concentration artificielle favorable aux grandes firmes.</p>
-      </div>
-    </div>
+    <div class="principle-card"><div class="p-num">1</div><div class="p-content"><h4>Ancrage légal obligatoire</h4><p>Le lien entre le token et l'actif doit être garanti par le système juridique — pas seulement par la technologie.</p></div></div>
+    <div class="principle-card"><div class="p-num">2</div><div class="p-content"><h4>Finalité irréversible</h4><p>Chaque transaction doit être définitive et irrévocable. Sans finalité légale, les bilans comptables ne sont pas fiables.</p></div></div>
+    <div class="principle-card"><div class="p-num">3</div><div class="p-content"><h4>Conformité automatisée (RegTech)</h4><p>Les règles de supervision sont encodées dans la blockchain — lecture en temps réel, sans déclarations manuelles.</p></div></div>
+    <div class="principle-card"><div class="p-num">4</div><div class="p-content"><h4>Terrain de jeu équilibré</h4><p>Objectif : réduire le coût de conformité pour les petits acteurs et éviter la concentration artificielle.</p></div></div>
   </div>
-
-  <div style="background:rgba(232,160,32,0.08);border:1px solid rgba(232,160,32,0.3);border-radius:4px;padding:1.5rem 2rem;font-size:0.9rem;line-height:1.7;color:var(--dark-grey)" class="reveal">
-    <strong style="color:var(--navy)">Cas Libra/Meta (2019–2020) :</strong> premier stablecoin "global" proposé par Facebook. Alerte mondiale. G7, FSB et BCE réagissent → accélération de MiCA. Libra devient Diem puis est abandonné en 2022 face à la pression réglementaire. Preuve que la régulation peut freiner les acteurs systémiques.
+  <div style="background:rgba(232,160,32,.07);border:1px solid rgba(232,160,32,.25);border-radius:4px;padding:1.4rem 1.8rem;font-size:.88rem;line-height:1.7;color:var(--grey)" class="reveal">
+    <strong style="color:var(--gold)">Cas Libra/Meta (2019–2020) :</strong> premier stablecoin "global" proposé par Facebook. G7, FSB et BCE réagissent → accélération de MiCA. Libra devient Diem puis est abandonné en 2022 sous pression réglementaire.
   </div>
 </section>
 
 <!-- CBDC -->
-<section id="riposte">
-  <div class="section-label">06 / Riposte des banques centrales</div>
-  <h2 class="section-title reveal">Les MNBC / CBDC</h2>
-  <p class="section-sub reveal">L'euro numérique comme réponse souveraine — BdF (2025) · Billet BCE 416 (2025) · BIS WP 905 (2020)</p>
-
+<section id="riposte" class="light">
+  <div class="sec-label">08 / Riposte des banques centrales</div>
+  <h2 class="sec-title reveal">Les MNBC / CBDC</h2>
+  <p class="sec-sub reveal">BdF (2025) · Billet BCE 416 (2025) · BIS WP 905 (2020)</p>
   <div class="cbdc-grid reveal">
     <div>
-      <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:1.5rem;color:var(--teal)">💶 L'Euro Numérique (BCE) — prévu 2028</h3>
-      <div class="cbdc-feature-list">
-        <div class="cbdc-feature"><div class="cbdc-dot"></div>Monnaie de banque centrale — pas privée</div>
-        <div class="cbdc-feature"><div class="cbdc-dot"></div>Cours légal dans 21 pays de la zone euro</div>
-        <div class="cbdc-feature"><div class="cbdc-dot"></div>350 millions d'utilisateurs potentiels dès le lancement</div>
-        <div class="cbdc-feature"><div class="cbdc-dot"></div>Paiements offline et confidentiels possibles</div>
-        <div class="cbdc-feature"><div class="cbdc-dot"></div>Plafond de détention individuel (protection du système)</div>
-        <div class="cbdc-feature"><div class="cbdc-dot"></div>Ne remplace <strong>PAS</strong> les billets en cash</div>
-        <div class="cbdc-feature"><div class="cbdc-dot"></div>Cadre législatif en discussion au Parlement EU (2026)</div>
-        <div class="cbdc-feature"><div class="cbdc-dot"></div>Lancement commercial visé : <strong>2028</strong></div>
+      <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1.2rem;color:var(--teal)">💶 L'Euro Numérique (BCE) — prévu 2028</h3>
+      <div class="cbdc-feat">
+        <div class="cbdc-feat-item"><div class="cbdc-dot"></div>Monnaie de banque centrale — pas privée</div>
+        <div class="cbdc-feat-item"><div class="cbdc-dot"></div>Cours légal dans 21 pays de la zone euro</div>
+        <div class="cbdc-feat-item"><div class="cbdc-dot"></div>350 millions d'utilisateurs potentiels dès le lancement</div>
+        <div class="cbdc-feat-item"><div class="cbdc-dot"></div>Paiements offline et confidentiels possibles</div>
+        <div class="cbdc-feat-item"><div class="cbdc-dot"></div>Plafond de détention individuel (protection du système)</div>
+        <div class="cbdc-feat-item"><div class="cbdc-dot"></div>Ne remplace <strong>PAS</strong> les billets en cash</div>
+        <div class="cbdc-feat-item"><div class="cbdc-dot"></div>Cadre législatif en discussion au Parlement EU (2026)</div>
+        <div class="cbdc-feat-item"><div class="cbdc-dot"></div>Lancement commercial visé : <strong>2028</strong></div>
       </div>
     </div>
     <div>
-      <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:1.5rem;color:var(--gold)">MNBC vs Stablecoin — différences clés</h3>
-      <table class="cbdc-compare-table">
-        <thead>
-          <tr>
-            <th>Critère</th>
-            <th>MNBC ✓</th>
-            <th>Stablecoin ✗</th>
-          </tr>
-        </thead>
+      <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1.2rem;color:var(--gold)">MNBC vs Stablecoin — différences clés</h3>
+      <table class="cbdc-cmp">
+        <thead><tr><th>Critère</th><th>MNBC ✓</th><th>Stablecoin ✗</th></tr></thead>
         <tbody>
           <tr><td>Émetteur</td><td class="ok">Banque centrale</td><td class="nok">Société privée</td></tr>
           <tr><td>Risque défaut</td><td class="ok">Nul (État)</td><td class="nok">Possible</td></tr>
           <tr><td>Convertibilité 1:1</td><td class="ok">Garantie par loi</td><td class="nok">Promesse contractuelle</td></tr>
           <tr><td>Politique monétaire</td><td class="ok">Intégrée</td><td class="nok">Peut perturber</td></tr>
           <tr><td>Plafond détention</td><td class="ok">Oui — protection</td><td class="nok">Non — bank run</td></tr>
-          <tr><td>Intérêts</td><td class="ok">Possible</td><td class="nok">Interdits MiCA/GENIUS</td></tr>
+          <tr><td>Intérêts</td><td class="ok">Possible</td><td class="nok">Interdits</td></tr>
         </tbody>
       </table>
     </div>
   </div>
-
-  <div class="usa-warning reveal">
-    <strong>⚠️ Les USA refusent la CBDC de détail</strong> — ils préfèrent les stablecoins privés (GENIUS Act). Exception politique mondiale. 137 projets CBDC en cours (Atlantic Council, 2025) : Nigeria, Jamaïque, Bahamas déjà lancés. BIS (2020) : CBDCs et systèmes de paiement rapide peuvent coexister comme solutions complémentaires.
+  <div class="usa-warn reveal">
+    <strong>⚠️ Les USA refusent la CBDC de détail</strong> — ils préfèrent les stablecoins privés (GENIUS Act). Exception politique mondiale. 137 projets CBDC en cours (Atlantic Council, 2025). BIS (2020) : CBDCs et systèmes de paiement rapide peuvent coexister.
   </div>
 </section>
 
-<!-- COMMERCIAL BANKS + REVOLUT -->
-<section class="light">
-  <div class="section-label">07 / Banques commerciales</div>
-  <h2 class="section-title reveal">Menaces, adaptations et le modèle Revolut</h2>
-  <p class="section-sub reveal">BCE WP 3199 (Altavilla et al., 2025) · Banque de France (2025) · BIS WP 905 (2020) · ING News (2025)</p>
-
-  <div class="banks-grid reveal">
-    <div class="banks-box threat">
-      <div class="banks-box-header">La menace (BCE WP 3199, 2025)</div>
-      <div class="banks-box-body">
-        <div class="banks-item" style="color:var(--dark-grey)">Fuite des dépôts retail vers stablecoins → moins de ressources pour prêter</div>
-        <div class="banks-item" style="color:var(--dark-grey)">100 Mds$ de dépôts perdus → ~50 Mds$ de prêts en moins</div>
-        <div class="banks-item" style="color:var(--dark-grey)">Hausse du coût de refinancement : dépôts wholesale plus chers</div>
-        <div class="banks-item" style="color:var(--dark-grey)">Banques exposées aux crypto : monetary policy transmission affaiblie</div>
-        <div class="banks-item" style="color:var(--dark-grey)">Effet non-linéaire : impact faible aujourd'hui, massif si adoption grand public</div>
-      </div>
-    </div>
-    <div class="banks-box response">
-      <div class="banks-box-header">La contre-attaque des banques</div>
-      <div class="banks-box-body">
-        <div class="banks-item" style="color:var(--dark-grey)">Émission de stablecoins propres via filiale EMT (conforme MiCA)</div>
-        <div class="banks-item" style="color:var(--dark-grey)">9 banques EU (ING, BNP, Citi, Deutsche...) : stablecoin euro 2026</div>
-        <div class="banks-item" style="color:var(--dark-grey)">Projet Agora (BRI) : partenariat banques centrales + banques privées</div>
-        <div class="banks-item" style="color:var(--dark-grey)">Intégration euro numérique comme infrastructure de base</div>
-        <div class="banks-item" style="color:var(--dark-grey)">Hausse des taux de dépôt pour retenir les clients</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="revolut-card reveal">
-    <div class="revolut-header">
-      <div class="revolut-logo">R</div>
-      <div>
-        <div class="revolut-title">CAS REVOLUT — Le modèle hybride fintech</div>
-        <div class="revolut-subtitle">Licence bancaire UE obtenue 2024 · Présent dans 35 pays</div>
-      </div>
-    </div>
-    <div class="revolut-stats">
-      <div class="rev-stat">
-        <div class="rev-stat-val">45M</div>
-        <div class="rev-stat-label">Utilisateurs</div>
-      </div>
-      <div class="rev-stat">
-        <div class="rev-stat-val">~45 Mds$</div>
-        <div class="rev-stat-label">Valorisation</div>
-      </div>
-      <div class="rev-stat">
-        <div class="rev-stat-val">35</div>
-        <div class="rev-stat-label">Pays actifs</div>
-      </div>
-      <div class="rev-stat">
-        <div class="rev-stat-val">2024</div>
-        <div class="rev-stat-label">Licence bancaire UE</div>
-      </div>
-    </div>
-    <div class="revolut-body">
-      Revolut intègre les stablecoins dans ses virements internationaux : transferts quasi-instantanés à très bas coût, sans passer par SWIFT ni les banques correspondantes traditionnelles. Ce modèle hybride — ni banque pure, ni stablecoin pur — anticipe l'euro numérique et illustre comment les fintechs contournent les banques classiques <strong>en utilisant les stablecoins comme infrastructure de règlement</strong>. Un exemple concret des mutations que la BIS (2020) et la BCE (2025) analysent dans leurs travaux de recherche.
-    </div>
-  </div>
-</section>
-
-<!-- EUROSYSTEM STRATEGY -->
+<!-- BANKS + REVOLUT -->
 <section>
-  <div class="section-label">08 / Stratégie Eurosystème</div>
-  <h2 class="section-title reveal">2 niveaux pour préserver la souveraineté</h2>
-  <p class="section-sub reveal">Banque de France — Bénassy-Quéré (sept. 2025) · BCE Governing Council (juil. 2025) · BCE WP 3199</p>
+  <div class="sec-label">09 / Banques commerciales</div>
+  <h2 class="sec-title reveal">Menaces et adaptations</h2>
+  <p class="sec-sub reveal">BCE WP 3199 (2025) · BdF (2025) · BIS WP 905 (2020)</p>
+  <div class="banks-grid reveal">
+    <div class="banks-box threat"><div class="banks-box-hdr">La menace (BCE WP 3199)</div><div class="banks-box-body">
+      <div class="banks-item">Fuite des dépôts vers stablecoins → moins de ressources pour prêter</div>
+      <div class="banks-item">100 Mds$ de dépôts perdus → ~50 Mds$ de prêts en moins</div>
+      <div class="banks-item">Hausse du coût de refinancement : dépôts wholesale plus chers</div>
+      <div class="banks-item">Banques exposées aux crypto : monetary policy transmission affaiblie</div>
+      <div class="banks-item">Effet non-linéaire : impact faible aujourd'hui, massif si adoption grand public</div>
+    </div></div>
+    <div class="banks-box response"><div class="banks-box-hdr">La contre-attaque des banques</div><div class="banks-box-body">
+      <div class="banks-item">Émission de stablecoins propres via filiale EMT (conforme MiCA)</div>
+      <div class="banks-item">9 banques EU (ING, BNP, Citi, Deutsche...) : stablecoin euro 2026</div>
+      <div class="banks-item">Projet Agora (BRI) : partenariat banques centrales + banques privées</div>
+      <div class="banks-item">Intégration euro numérique comme infrastructure de base</div>
+      <div class="banks-item">Hausse des taux de dépôt pour retenir les clients</div>
+    </div></div>
+  </div>
+  <div class="revolut-card reveal">
+    <div class="rev-hdr"><div class="rev-logo">R</div><div><div class="rev-title">CAS REVOLUT — Le modèle hybride fintech</div><div class="rev-sub">Licence bancaire UE obtenue 2024 · Présent dans 35 pays</div></div></div>
+    <div class="rev-stats">
+      <div class="rev-stat"><div class="rev-sv">45M</div><div class="rev-sl">Utilisateurs</div></div>
+      <div class="rev-stat"><div class="rev-sv">~45 Mds$</div><div class="rev-sl">Valorisation</div></div>
+      <div class="rev-stat"><div class="rev-sv">35</div><div class="rev-sl">Pays actifs</div></div>
+      <div class="rev-stat"><div class="rev-sv">2024</div><div class="rev-sl">Licence bancaire UE</div></div>
+    </div>
+    <div class="rev-body">Revolut intègre les stablecoins dans ses virements internationaux : transferts quasi-instantanés à très bas coût, sans passer par SWIFT ni les banques correspondantes. Ce modèle hybride — ni banque pure, ni stablecoin pur — anticipe l'euro numérique et illustre comment les fintechs contournent les banques classiques <strong>en utilisant les stablecoins comme infrastructure de règlement</strong>.</div>
+  </div>
+</section>
 
-  <div class="strategy-levels reveal">
-    <div class="strategy-level retail">
-      <div class="strategy-level-header">NIVEAU 1 — Retail (grand public) : Euro Numérique + Wero + EuroPA</div>
-      <div class="strategy-level-body">
-        <div class="strategy-item">
-          <strong>Euro Numérique</strong>
-          Billet numérique pour 350M de citoyens — cours légal universel — concurrent direct aux stablecoins en euros
-        </div>
-        <div class="strategy-item">
-          <strong>Wero + EuroPA</strong>
-          Paiements instantanés pan-européens en cours d'interopérabilité (BE, FR, DE, LU, NL + IT, PT, ES)
-        </div>
-        <div class="strategy-item">
-          <strong>Calendrier</strong>
-          Cadre législatif en discussion 2026 — lancement commercial visé 2028 — plateforme ouverte aux acteurs privés
-        </div>
+<!-- EUROSYSTEM -->
+<section class="light">
+  <div class="sec-label">10 / Stratégie Eurosystème</div>
+  <h2 class="sec-title reveal">2 niveaux pour préserver la souveraineté</h2>
+  <p class="sec-sub reveal">Banque de France — Bénassy-Quéré (sept. 2025) · BCE Governing Council (juil. 2025)</p>
+  <div class="strat-levels reveal">
+    <div class="strat-level retail"><div class="strat-hdr">NIVEAU 1 — Retail (grand public) : Euro Numérique + Wero + EuroPA</div>
+      <div class="strat-body">
+        <div class="strat-item"><strong>Euro Numérique</strong>Billet numérique pour 350M de citoyens — cours légal universel — concurrent direct aux stablecoins en euros</div>
+        <div class="strat-item"><strong>Wero + EuroPA</strong>Paiements instantanés pan-européens en cours d'interopérabilité (BE, FR, DE, LU, NL + IT, PT, ES)</div>
+        <div class="strat-item"><strong>Calendrier</strong>Cadre législatif 2026 — lancement commercial 2028 — plateforme ouverte aux acteurs privés</div>
       </div>
     </div>
-    <div class="strategy-level wholesale">
-      <div class="strategy-level-header">NIVEAU 2 — Wholesale (institutions) : Projets PONTES (2026) et APPIA (long terme)</div>
-      <div class="strategy-level-body">
-        <div class="strategy-item">
-          <strong>Projet PONTES (2026)</strong>
-          Phase 1 — règlement DLT interopérable avec les services Target existants de la BCE
-        </div>
-        <div class="strategy-item">
-          <strong>Projet APPIA</strong>
-          Plateforme unifiée : monnaie centrale tokenisée + dépôts bancaires tokenisés + instruments financiers tokenisés + euro numérique
-        </div>
-        <div class="strategy-item">
-          <strong>Objectif stratégique</strong>
-          Financer l'Union des Marchés de Capitaux, faciliter l'accès des PME et optimiser les portefeuilles européens
-        </div>
+    <div class="strat-level wholesale"><div class="strat-hdr">NIVEAU 2 — Wholesale (institutions) : Projets PONTES (2026) et APPIA (long terme)</div>
+      <div class="strat-body">
+        <div class="strat-item"><strong>Projet PONTES (2026)</strong>Phase 1 — règlement DLT interopérable avec les services Target existants de la BCE</div>
+        <div class="strat-item"><strong>Projet APPIA</strong>Plateforme unifiée : monnaie centrale tokenisée + dépôts bancaires tokenisés + instruments financiers</div>
+        <div class="strat-item"><strong>Objectif stratégique</strong>Financer l'Union des Marchés de Capitaux et optimiser les portefeuilles européens</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- SYNTHESIS -->
-<section id="synthese" class="light">
-  <div class="section-label">09 / Synthèse</div>
-  <h2 class="section-title reveal">Ce qu'il faut retenir</h2>
-  <p class="section-sub reveal">6 points clés issus de 7 sources académiques et institutionnelles 2020–2025</p>
-
-  <div class="synthesis-list reveal">
-    <div class="synthesis-item">
-      <div class="syn-num">1</div>
-      <div class="syn-src">BIS<br>2020</div>
-      <div class="syn-text">Les stablecoins sont une innovation réelle mais risquée : bank runs possibles, risques AML/CFT, conflits d'intérêts des émetteurs (cas Tether). La supervision intégrée dans la blockchain est la voie d'avenir.</div>
-    </div>
-    <div class="synthesis-item">
-      <div class="syn-num">2</div>
-      <div class="syn-src">BdF<br>2025</div>
-      <div class="syn-text">L'Europe est dangereusement dépendante : 66% des paiements cartes via Visa/Mastercard. Les stablecoins en dollars risquent d'aggraver cette dépendance via la dollarisation numérique.</div>
-    </div>
-    <div class="synthesis-item">
-      <div class="syn-num">3</div>
-      <div class="syn-src">BCE<br>416</div>
-      <div class="syn-text">Impact monétaire réel mais limité : 0,7 pts de base de perturbation pour 10 Mds$ d'USDT. MAIS effet non-linéaire — impact massif si adoption grand public au-delà de la sphère crypto.</div>
-    </div>
-    <div class="synthesis-item">
-      <div class="syn-num">4</div>
-      <div class="syn-src">BCE WP<br>3199</div>
-      <div class="syn-text">100 Mds$ de dépôts perdus = 50 Mds$ de prêts en moins. Banques exposées aux crypto : monetary policy transmission affaiblie et moins prédictible. Risque systémique si adoption grand public.</div>
-    </div>
-    <div class="synthesis-item">
-      <div class="syn-num">5</div>
-      <div class="syn-src">FMI<br>2025</div>
-      <div class="syn-text">Opportunité réelle pour pays émergents (remittances, inclusion financière) mais risque de fragmentation monétaire internationale sans coopération réglementaire forte entre pays.</div>
-    </div>
-    <div class="synthesis-item">
-      <div class="syn-num">6</div>
-      <div class="syn-src">WEF<br>2025</div>
-      <div class="syn-text">MiCA (UE) et GENIUS Act (USA) convergent sur principes clés mais divergent sur détails. L'euro numérique (2028) et les projets Pontes/Appia sont la réponse souveraine européenne.</div>
-    </div>
+<section id="synthese">
+  <div class="sec-label">11 / Synthèse</div>
+  <h2 class="sec-title reveal">Ce qu'il faut retenir</h2>
+  <p class="sec-sub reveal">6 points clés issus de 7 sources — 2020–2025</p>
+  <div class="synth-list reveal">
+    <div class="synth-item"><div class="syn-n">1</div><div class="syn-src">BIS<br>2020</div><div class="syn-t">Les stablecoins répondent à un <strong>vrai besoin</strong> : virements moins chers, plus rapides, accessibles à 1,4Md de personnes sans banque. Mais ils portent des risques réels (bank runs, opacité des réserves).</div></div>
+    <div class="synth-item"><div class="syn-n">2</div><div class="syn-src">BdF<br>2025</div><div class="syn-t">L'Europe est dangereusement dépendante : 66% des paiements cartes via Visa/Mastercard. Les stablecoins en dollars risquent d'aggraver la <strong>dollarisation numérique</strong>.</div></div>
+    <div class="synth-item"><div class="syn-n">3</div><div class="syn-src">BCE<br>416</div><div class="syn-t">Impact monétaire réel mais <strong>limité aujourd'hui</strong> : 0,7 pts de base de perturbation pour 10 Mds$ d'USDT. Mais <strong>effet non-linéaire</strong> — massif si adoption grand public.</div></div>
+    <div class="synth-item"><div class="syn-n">4</div><div class="syn-src">BCE WP<br>3199</div><div class="syn-t">100 Mds$ de dépôts perdus = 50 Mds$ de prêts en moins. Banques exposées aux crypto : <strong>monetary policy transmission affaiblie</strong> et moins prédictible.</div></div>
+    <div class="synth-item"><div class="syn-n">5</div><div class="syn-src">FMI<br>2025</div><div class="syn-t">Opportunité réelle pour pays émergents (<strong>remittances, inclusion financière</strong>) mais risque de fragmentation monétaire internationale sans coopération réglementaire forte.</div></div>
+    <div class="synth-item"><div class="syn-n">6</div><div class="syn-src">WEF<br>2025</div><div class="syn-t">MiCA et GENIUS Act <strong>convergent sur les principes</strong> clés. L'euro numérique (2028) et les projets Pontes/Appia sont la réponse souveraine européenne.</div></div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">STABLECOINS</div>
-    <div class="footer-sources">
+    <div class="footer-srcs">
       <span class="footer-src">BIS WP 905 · Arner, Auer &amp; Frost · 2020</span>
-      <span class="footer-src">Banque de France · Bénassy-Quéré · sept. 2025</span>
-      <span class="footer-src">Billet BCE 416 · Dufouleur · nov. 2025</span>
+      <span class="footer-src">Banque de France · Bénassy-Quéré · 2025</span>
+      <span class="footer-src">Billet BCE 416 · Dufouleur · 2025</span>
       <span class="footer-src">BCE WP 3199 · Altavilla et al. · 2025</span>
-      <span class="footer-src">FMI Blog · Adrian, Miccoli &amp; Sugimoto · déc. 2025</span>
-      <span class="footer-src">World Economic Forum · sept. 2025</span>
+      <span class="footer-src">FMI Blog · Adrian et al. · 2025</span>
+      <span class="footer-src">World Economic Forum · 2025</span>
       <span class="footer-src">AdamSmith MiCA Guide · 2025</span>
     </div>
   </div>
 </footer>
 
 <script>
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, i * 80);
-      observer.unobserve(entry.target);
+// ── SCROLL REVEAL ──────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'), i*80);
+      observer.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-revealEls.forEach(el => observer.observe(el));
-
-// Nav highlight
+// ── NAV ACTIVE ─────────────────────────────────────
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    if (window.scrollY >= sectionTop) current = section.getAttribute('id');
-  });
-  navLinks.forEach(link => {
-    link.style.color = '';
-    if (link.getAttribute('href') === '#' + current) link.style.color = 'var(--gold)';
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-130) cur=s.id;});
+  navLinks.forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href')==='#'+cur);
   });
 });
+
+// ── SCENARIO DATA ──────────────────────────────────
+const scenarios = {
+  remittance: {
+    title:'💸 Envoyer 500 € de France vers le Maroc',
+    desc:"Un travailleur migrant envoie son salaire à sa famille. Observez la différence de vitesse et de coût.",
+    swiftDays:72, stableSecs:12, swiftFee:'jusqu\'à 20%', stableFee:'0,01–0,5%'
+  },
+  business: {
+    title:'🏢 Paiement B2B : France → Japon (50 000 €)',
+    desc:"Un fournisseur français facture une entreprise japonaise. Le règlement peut prendre plusieurs jours ouvrés.",
+    swiftDays:120, stableSecs:15, swiftFee:'0,5–3%', stableFee:'0,01–0,1%'
+  },
+  ecommerce: {
+    title:'🛒 E-commerce transfrontalier : achat 200 € vers USA',
+    desc:"Un consommateur français achète sur un site américain. Les frais de conversion et de traitement s'accumulent.",
+    swiftDays:24, stableSecs:8, swiftFee:'3–5%', stableFee:'0,1–0,3%'
+  }
+};
+
+let currentScenario = 'remittance';
+let raceInterval = null;
+let raceRunning = false;
+
+function showScenario(id) {
+  currentScenario = id;
+  const sc = scenarios[id];
+  document.getElementById('raceTitle').textContent = sc.title;
+  document.getElementById('raceDesc').textContent = sc.desc;
+  document.getElementById('swiftFee').textContent = sc.swiftFee;
+  document.getElementById('stableFee').textContent = sc.stableFee;
+  document.querySelectorAll('.scenario-tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  resetRace();
+}
+
+function resetRace() {
+  if(raceInterval) clearInterval(raceInterval);
+  raceRunning = false;
+  document.getElementById('swiftBar').style.width = '0%';
+  document.getElementById('stableBar').style.width = '0%';
+  document.getElementById('swiftStatus').textContent = 'En attente';
+  document.getElementById('stableStatus').textContent = 'En attente';
+  document.getElementById('swiftStatus').style.cssText = 'background:rgba(192,57,43,.15);color:var(--red)';
+  document.getElementById('stableStatus').style.cssText = 'background:rgba(29,138,79,.15);color:var(--green)';
+  document.getElementById('winnerBanner').classList.remove('show');
+  document.getElementById('winnerBanner').style.cssText = '';
+  document.getElementById('raceBtn').textContent = '▶ Lancer la simulation';
+}
+
+function startRace() {
+  if(raceRunning){resetRace();return;}
+  raceRunning = true;
+  document.getElementById('raceBtn').textContent = '↺ Recommencer';
+  const sc = scenarios[currentScenario];
+  let swiftPct = 0, stablePct = 0;
+  let stableDone = false, swiftDone = false;
+  const swiftBar = document.getElementById('swiftBar');
+  const stableBar = document.getElementById('stableBar');
+  const swiftStatus = document.getElementById('swiftStatus');
+  const stableStatus = document.getElementById('stableStatus');
+  const swiftSpeed = 100 / sc.swiftDays * 0.3;
+  const stableSpeed = 100 / sc.stableSecs * 2;
+  stableStatus.textContent = 'En cours...';
+  swiftStatus.textContent = 'En cours...';
+  raceInterval = setInterval(()=>{
+    if(!stableDone){
+      stablePct = Math.min(stablePct + stableSpeed, 100);
+      stableBar.style.width = stablePct + '%';
+      if(stablePct >= 100){
+        stableDone = true;
+        stableStatus.textContent = '✅ Arrivé !';
+        stableStatus.style.cssText = 'background:rgba(29,138,79,.25);color:var(--green);font-weight:700';
+        if(!swiftDone) showWinner('stable');
+      }
+    }
+    if(!swiftDone){
+      swiftPct = Math.min(swiftPct + swiftSpeed, 100);
+      swiftBar.style.width = swiftPct + '%';
+      if(swiftPct >= 100){
+        swiftDone = true;
+        swiftStatus.textContent = '✅ Arrivé !';
+        swiftStatus.style.cssText = 'background:rgba(192,57,43,.25);color:var(--red);font-weight:700';
+      }
+    }
+    if(stableDone && swiftDone) clearInterval(raceInterval);
+  }, 50);
+}
+
+function showWinner(winner){
+  const banner = document.getElementById('winnerBanner');
+  banner.textContent = '⚡ Le stablecoin est arrivé ! Le virement SWIFT est encore en cours... (' + scenarios[currentScenario].swiftDays + 'x plus lent)';
+  banner.style.cssText = 'background:rgba(29,138,79,.15);border:1px solid rgba(29,138,79,.4);color:var(--green);padding:1.2rem 1.8rem;border-radius:4px;font-family:"Syne",sans-serif;font-weight:700;text-align:center';
+  banner.classList.add('show');
+}
+
+// ── CALCULATOR ─────────────────────────────────────
+function updateCalc(){
+  const amount = parseFloat(document.getElementById('calcAmount').value)||0;
+  const dest = document.getElementById('calcDest').value.split(',');
+  const swiftRate = parseFloat(dest[0]);
+  const stableRate = parseFloat(dest[1]);
+  const swiftFxRate = swiftRate * 0.3;
+  const swiftFeeAmt = amount * swiftRate / 100;
+  const swiftFx = amount * swiftFxRate / 100;
+  const swiftTotal = swiftFeeAmt + swiftFx;
+  const swiftReceived = amount - swiftTotal;
+  const stableFeeAmt = amount * stableRate / 100;
+  const stableFx = amount * 0.1 / 100;
+  const stableTotal = stableFeeAmt + stableFx;
+  const stableReceived = amount - stableTotal;
+  const savings = swiftTotal - stableTotal;
+  const savingsPct = amount > 0 ? (savings / amount * 100).toFixed(1) : 0;
+  const fmt = v => v.toFixed(2) + ' €';
+  document.getElementById('swiftFeeAmt').textContent = '–' + fmt(swiftFeeAmt);
+  document.getElementById('swiftFx').textContent = '–' + fmt(swiftFx);
+  document.getElementById('swiftTotal').textContent = '–' + fmt(swiftTotal);
+  document.getElementById('swiftReceived').textContent = fmt(swiftReceived);
+  document.getElementById('stableFeeAmt').textContent = '–' + fmt(stableFeeAmt);
+  document.getElementById('stableFx').textContent = '–' + fmt(stableFx);
+  document.getElementById('stableTotal').textContent = '–' + fmt(stableTotal);
+  document.getElementById('stableReceived').textContent = fmt(stableReceived);
+  document.getElementById('savingsBig').textContent = fmt(savings) + ' (' + savingsPct + '%)';
+  document.getElementById('savingsLabel').textContent = 'd\'économies en utilisant un stablecoin plutôt que le virement traditionnel';
+}
+updateCalc();
+
+// ── JOURNEY ────────────────────────────────────────
+function showJourney(id){
+  document.querySelectorAll('.journey-display').forEach(d=>d.classList.remove('active'));
+  document.querySelectorAll('.journey-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('journey'+id.charAt(0).toUpperCase()+id.slice(1)).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── INFLATION METER ────────────────────────────────
+function setInflation(btn, country, rate, color, desc){
+  document.querySelectorAll('.inf-country-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('inflationPct').textContent = rate > 999 ? rate.toLocaleString('fr-FR') + '%' : rate + '%';
+  document.getElementById('inflationCountry').textContent = country;
+  document.getElementById('inflationDesc').textContent = desc;
+  document.getElementById('inflationPct').style.color = color;
+  // Arc: max display at 95% of circle for extreme values
+  const arc = document.getElementById('inflationArc');
+  const circumference = 314;
+  let pct = Math.min(rate / 7000, 1);
+  const offset = circumference * (1 - pct);
+  arc.style.strokeDashoffset = offset;
+  arc.style.stroke = color;
+}
+// Init meter
+setTimeout(()=>{
+  const arc = document.getElementById('inflationArc');
+  arc.style.strokeDashoffset = 314 * 0.07;
+},300);
 </script>
 </body>
 </html>
